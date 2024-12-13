@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "793269189000",
+    "project_id": "seeable0",
+    "storage_bucket": "seeable0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793269189000:android:09f15546cbe9e82bce223d",
+        "android_client_info": {
+          "package_name": "com.example.seeable"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQgIKdaVo4DA-Lm-NxPUwGMzAd-7QOPR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
