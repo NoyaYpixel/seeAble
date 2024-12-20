@@ -1,8 +1,6 @@
 package com.example.seeable;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,33 +9,26 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.model.User;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.seeable.utils.SharedPreferencesUtil;
+
+import services.AuthenticationService;
+import services.DatabaseService;
 
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
+    EditText etFname, etLname, etPhone,etEmail, etPassword;
 
-    EditText etfname, etlname, etEmail, etPhone, etPassword;
+
     Button btnReg;
-    String fname, lname, phone, email, password;
+    private DatabaseService databaseService;
+    private AuthenticationService authenticationService;
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,91 +44,91 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void Init() {
-        etfname=findViewById(R.id.etFname);
-        etlname=findViewById(R.id.etLname);
+        etFname=findViewById(R.id.etFname);
+        etLname=findViewById(R.id.etLname);
         etPhone=findViewById(R.id.etPhone);
         etEmail=findViewById(R.id.etEmail);
         etPassword=findViewById(R.id.etPassword);
         btnReg=findViewById(R.id.btnReg);
         btnReg.setOnClickListener(this);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Users");
+        databaseService = DatabaseService.getInstance();
+        authenticationService = AuthenticationService.getInstance();
 
-        mAuth = FirebaseAuth.getInstance();
     }
-
 
     @Override
     public void onClick(View v) {
-        fname=etfname.getText().toString();
-        lname=etlname.getText().toString();
-        phone=etPhone.getText().toString();
-        email=etEmail.getText().toString();
-        password=etPassword.getText().toString();
+        String fname=etFname.getText().toString();
+        String lname=etLname.getText().toString();
+        String phone=etPhone.getText().toString();
+        String email=etEmail.getText().toString();
+        String password=etPassword.getText().toString();
 
         //check if registration is valid
-        Boolean isValid=true;
+        if (!isValid(fname, lname, phone, email, password)) {
+            return;
+        }
+
+        authenticationService.signUp(email, password, new AuthenticationService.AuthCallback() {
+            @Override
+            public void onCompleted(Object object) {
+                // Sign in success, update UI with the signed-in user's information
+                Log.d("TAG", "createUserWithEmail:success");
+                String uid = authenticationService.getCurrentUserId();
+                User newUser=new User(uid, fname, lname, phone, email,password);
+
+                databaseService.createNewUser(newUser, new DatabaseService.DatabaseCallback<Object>() {
+                    @Override
+                    public void onCompleted(Object object) {
+                        SharedPreferencesUtil.saveUser(Register.this, email, password);
+
+                        Intent goHome=new Intent(Register.this, MainActivity.class);
+                        goHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(goHome);
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+                        Log.w("TAG", "createUserWithEmail:failure", e);
+                        Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+                // If sign in fails, display a message to the user.
+                Log.w("TAG", "createUserWithEmail:failure", e);
+                Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private boolean isValid(String fname, String lname, String phone, String email, String password) {
         if (fname.length()<2){
             Toast.makeText(Register.this,"שם פרטי קצר מדי", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
         if (lname.length()<2){
             Toast.makeText(Register.this,"שם משפחה קצר מדי", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
         if (phone.length()<9||phone.length()>10){
             Toast.makeText(Register.this,"מספר הטלפון לא תקין", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
         if (!email.contains("@")){
             Toast.makeText(Register.this,"כתובת האימייל לא תקינה", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
         if(password.length()<6){
             Toast.makeText(Register.this,"הסיסמה קצרה מדי", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
         if(password.length()>20){
             Toast.makeText(Register.this,"הסיסמה ארוכה מדי", Toast.LENGTH_LONG).show();
-            isValid = false;
+            return false;
         }
-
-        if (isValid==true){
-
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d("TAG", "createUserWithEmail:success");
-                                FirebaseUser fireuser = mAuth.getCurrentUser();
-                                User newUser=new User(fireuser.getUid(), fname, lname, phone, email, password);
-                                myRef.child(fireuser.getUid()).setValue(newUser);
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                                editor.putString("email", email);
-                                editor.putString("password", password);
-
-                                editor.commit();
-                                Intent goLog=new Intent(getApplicationContext(), MainActivity.class);
-                                goLog.setAction(Intent.ACTION_SEND);
-                                goLog.putExtra(Intent.EXTRA_TEXT,"Sharing data from my App");
-                                goLog.setType("text/plain");
-                                startActivity(goLog);
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(Register.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-                            // ...
-                        }
-                    });
-        }
-
-
+        return true;
     }
-}

@@ -1,12 +1,10 @@
 package com.example.seeable.model;
 
-public class User {
-
+public class UserTeam {
     String id;
     String fname, lname, phone, email, password;
-    public User() {
-    }
-    public User(String id, String fname, String lname, String phone, String email, String password) {
+
+    public UserTeam(String id, String fname, String lname, String phone, String email, String password) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -14,7 +12,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    public User(String id, String fname, String lname, String phone, String email) {
+
+    public UserTeam(String id, String fname, String lname, String phone, String email) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -22,10 +21,7 @@ public class User {
         this.email = email;
     }
 
-    public User(String id, String fname, String email) {
-        this.id = id;
-        this.fname = fname;
-        this.email = email;
+    public UserTeam() {
     }
 
     public String getId() {
@@ -78,7 +74,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserTeam{" +
                 "id='" + id + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +

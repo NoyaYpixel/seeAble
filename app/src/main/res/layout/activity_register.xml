@@ -16,7 +16,7 @@
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם משפחה"
         android:inputType="text"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם פרטי"
         android:inputType="text"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:gravity="right"
         android:hint="סיסמה"
         android:inputType="textPassword"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:fontFamily="@font/asakimboldwebfont"
         android:text="הרשמה"
         android:textColor="#878686"
-        android:textSize="70dp"
+        android:textSize="70sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         android:fontFamily="@font/assistantsemibold"
         android:hint="כתובת אימייל"
         android:inputType="textEmailAddress"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
         android:gravity="right"
         android:hint="מספר טלפון"
         android:inputType="phone"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
         android:fontFamily="@font/assistantsemibold"
         android:hint="כתובת מגורים"
         android:inputType="text"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnReg"
@@ -122,22 +122,40 @@
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintVertical_bias="0.725" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="218dp"
-        android:layout_height="328dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995" />
+    <RadioGroup
+        android:layout_width="135dp"
+        android:layout_height="92dp"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="487dp">
+
+        <RadioButton
+            android:id="@+id/rdbParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:text="הורה"
+            android:textSize="20sp"
+            android:fontFamily="@font/assistantsemibold"
+            android:textColor="#555454"
+            />
+
+        <RadioButton
+            android:id="@+id/rdbKindergardenStaff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:text="צוות הגן"
+            tools:layout_editor_absoluteX="118dp"
+            tools:layout_editor_absoluteY="485dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/assistantsemibold"
+            android:textColor="#555454"/>
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
