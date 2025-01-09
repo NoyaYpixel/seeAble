@@ -58,11 +58,15 @@ public class SharedPreferencesUtil {
     // Add more utility methods as needed
 
     // User related methods
-    public static void saveUser(Context context, final String email, final String password) {
+    public static void saveUser(Context context, User user) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email", email);
-        editor.putString("password", password);
+        editor.putString("id", user.getId());
+        editor.putString("fname", user.getFname());
+        editor.putString("lname", user.getLname());
+        editor.putString("phone", user.getPhone());
+        editor.putString("email", user.getEmail());
+        editor.putString("password", user.getPassword());
         editor.apply();
     }
 
@@ -73,21 +77,28 @@ public class SharedPreferencesUtil {
             return null;
         }
         String id = sharedPreferences.getString("id", "");
-        String username = sharedPreferences.getString("username", "");
+        String fname = sharedPreferences.getString("fname", "");
+        String lname = sharedPreferences.getString("lname","");
+        String phone = sharedPreferences.getString("phone","");
         String email = sharedPreferences.getString("email", "");
-        return new User(id, username, email);
+        String password = sharedPreferences.getString("password", "");
+        return new User();
     }
 
     public static void signOutUser(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("id");
-        editor.remove("username");
+        editor.remove("fname");
+        editor.remove("lname");
+        editor.remove("fname");
         editor.remove("email");
+        editor.remove("password");
         editor.apply();
     }
 
     public static boolean isUserLoggedIn(Context context) {
         return contains(context, "id");
     }
+}
 

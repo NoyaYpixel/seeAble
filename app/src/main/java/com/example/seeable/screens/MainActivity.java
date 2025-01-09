@@ -1,16 +1,17 @@
-package com.example.seeable;
+package com.example.seeable.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.seeable.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnLog, btnReg;
@@ -39,13 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v==btnLog)
         {
-            Intent go = new Intent(this,Login.class);
+            Intent go = new Intent(this, Login.class);
             startActivity(go);
         }
         else
         if(v==btnReg)
         {
-            Intent go = new Intent(this,Register.class);
+            Intent go = new Intent(this, Register.class);
             startActivity(go);
         }
 

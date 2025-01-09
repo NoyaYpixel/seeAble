@@ -1,81 +1,33 @@
 package com.example.seeable.model;
 
-public class UserTeam {
-    String id;
-    String fname, lname, phone, email, password;
+public class UserTeam extends User {
+    String position;
 
-    public UserTeam(String id, String fname, String lname, String phone, String email, String password) {
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
+    public UserTeam(String position) {
+        this.position = position;
     }
 
-    public UserTeam(String id, String fname, String lname, String phone, String email) {
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-        this.phone = phone;
-        this.email = email;
+    public UserTeam(String id, String fname, String lname, String phone, String email, String password, String position) {
+        super(id, fname, lname, phone, email, password);
+        this.position = position;
     }
 
     public UserTeam() {
     }
 
-    public String getId() {
-        return id;
+    public String getPosition() {
+        return position;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     @Override
     public String toString() {
         return "UserTeam{" +
-                "id='" + id + '\'' +
+                "position='" + position + '\'' +
+                ", id='" + id + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", phone='" + phone + '\'' +

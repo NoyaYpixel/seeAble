@@ -1,4 +1,4 @@
-package com.example.seeable;
+package com.example.seeable.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.seeable.R;
 import com.example.seeable.model.User;
 import com.example.seeable.utils.SharedPreferencesUtil;
 
-import services.AuthenticationService;
-import services.DatabaseService;
+import com.example.seeable.services.AuthenticationService;
+import com.example.seeable.services.DatabaseService;
 
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
-    EditText etFname, etLname, etPhone,etEmail, etPassword;
+    EditText etFname, etLname, etPhone, etEmail, etPassword;
 
 
     Button btnReg;
@@ -44,12 +45,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void Init() {
-        etFname=findViewById(R.id.etFname);
-        etLname=findViewById(R.id.etLname);
-        etPhone=findViewById(R.id.etPhone);
-        etEmail=findViewById(R.id.etEmail);
-        etPassword=findViewById(R.id.etPassword);
-        btnReg=findViewById(R.id.btnReg);
+        etFname = findViewById(R.id.etFname);
+        etLname = findViewById(R.id.etLname);
+        etPhone = findViewById(R.id.etPhone);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        btnReg = findViewById(R.id.btnReg);
         btnReg.setOnClickListener(this);
         databaseService = DatabaseService.getInstance();
         authenticationService = AuthenticationService.getInstance();
@@ -58,11 +59,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        String fname=etFname.getText().toString();
-        String lname=etLname.getText().toString();
-        String phone=etPhone.getText().toString();
-        String email=etEmail.getText().toString();
-        String password=etPassword.getText().toString();
+        String fname = etFname.getText().toString();
+        String lname = etLname.getText().toString();
+        String phone = etPhone.getText().toString();
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
 
         //check if registration is valid
         if (!isValid(fname, lname, phone, email, password)) {
@@ -71,18 +72,17 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         authenticationService.signUp(email, password, new AuthenticationService.AuthCallback() {
             @Override
-            public void onCompleted(Object object) {
+            public void onCompleted(String uid) {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d("TAG", "createUserWithEmail:success");
-                String uid = authenticationService.getCurrentUserId();
-                User newUser=new User(uid, fname, lname, phone, email,password);
+                User newUser = new User(uid, fname, lname, phone, email, password);
 
                 databaseService.createNewUser(newUser, new DatabaseService.DatabaseCallback<Object>() {
                     @Override
                     public void onCompleted(Object object) {
-                        SharedPreferencesUtil.saveUser(Register.this, email, password);
+                        SharedPreferencesUtil.saveUser(Register.this, newUser);
 
-                        Intent goHome=new Intent(Register.this, MainActivity.class);
+                        Intent goHome = new Intent(Register.this, MainActivity.class);
                         goHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(goHome);
                     }
@@ -106,29 +106,30 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private boolean isValid(String fname, String lname, String phone, String email, String password) {
-        if (fname.length()<2){
-            Toast.makeText(Register.this,"שם פרטי קצר מדי", Toast.LENGTH_LONG).show();
+        if (fname.length() < 2) {
+            Toast.makeText(Register.this, "שם פרטי קצר מדי", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (lname.length()<2){
-            Toast.makeText(Register.this,"שם משפחה קצר מדי", Toast.LENGTH_LONG).show();
+        if (lname.length() < 2) {
+            Toast.makeText(Register.this, "שם משפחה קצר מדי", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (phone.length()<9||phone.length()>10){
-            Toast.makeText(Register.this,"מספר הטלפון לא תקין", Toast.LENGTH_LONG).show();
+        if (phone.length() < 9 || phone.length() > 10) {
+            Toast.makeText(Register.this, "מספר הטלפון לא תקין", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!email.contains("@")){
-            Toast.makeText(Register.this,"כתובת האימייל לא תקינה", Toast.LENGTH_LONG).show();
+        if (!email.contains("@")) {
+            Toast.makeText(Register.this, "כתובת האימייל לא תקינה", Toast.LENGTH_LONG).show();
             return false;
         }
-        if(password.length()<6){
-            Toast.makeText(Register.this,"הסיסמה קצרה מדי", Toast.LENGTH_LONG).show();
+        if (password.length() < 6) {
+            Toast.makeText(Register.this, "הסיסמה קצרה מדי", Toast.LENGTH_LONG).show();
             return false;
         }
-        if(password.length()>20){
-            Toast.makeText(Register.this,"הסיסמה ארוכה מדי", Toast.LENGTH_LONG).show();
+        if (password.length() > 20) {
+            Toast.makeText(Register.this, "הסיסמה ארוכה מדי", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
     }
+}

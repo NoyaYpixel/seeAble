@@ -6,21 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C2DCE1"
-    tools:context=".Login">
+    tools:context=".screens.Login">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="254dp"
+        android:layout_height="81dp"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="84dp"
         android:fontFamily="@font/asakimboldwebfont"
         android:text="התחברות"
         android:textColor="#878686"
         android:textSize="70dp"
-        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/etEmailLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

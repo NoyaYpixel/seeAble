@@ -1,4 +1,4 @@
-package services;
+package com.example.seeable.services;
 
 import android.util.Log;
 
@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,18 @@ public class DatabaseService {
         });
     }
 
+    private <T> void getData(@NotNull final String path, @NotNull final Class<T> clazz, @NotNull final DatabaseCallback<T> callback) {
+        readData(path).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e(TAG, "Error getting data", task.getException());
+                callback.onFailed(task.getException());
+                return;
+            }
+            T data = task.getResult().getValue(clazz);
+            callback.onCompleted(data);
+        });
+    }
+
     private DatabaseReference readData(String path) {
         return databaseReference.child(path);
     }
@@ -61,8 +75,12 @@ public class DatabaseService {
         writeData("users/" + user.getId(), user, callback);
     }
 
+    public void getUser(String userId, DatabaseCallback<User> callback) {
+        getData("users/" + userId, User.class, callback);
+    }
+
     public void createNewUserTeam(UserTeam userTeam, DatabaseCallback<Object> callback) {
-        writeData("userTeams/" + UserTeam.getId(), userTeam, callback);
+        writeData("userTeams/" + userTeam.getId(), userTeam, callback);
     }
 
     public String getNewFoodId() {
@@ -71,22 +89,7 @@ public class DatabaseService {
 
 
     public void getUserTeam(String UserTeamId, DatabaseCallback<UserTeam> callback) {
-        readData("userTeams/" + UserTeamId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e(TAG, "Error getting data", task.getException());
-                    if (callback != null) {
-                        callback.onFailed(task.getException());
-                    }
-                    return;
-                }
-                UserTeam userTeam = task.getResult().getValue(UserTeam.class);
-                if (callback != null) {
-                    callback.onCompleted(userTeam);
-                }
-            }
-        });
+        getData("userTeams/" + UserTeamId, UserTeam.class, callback);
     }
 
     public void getUserTeams(DatabaseCallback<List<UserTeam>> callback) {
@@ -103,7 +106,7 @@ public class DatabaseService {
                 List<UserTeam> userTeams = new ArrayList<>();
                 task.getResult().getChildren().forEach(dataSnapshot -> {
                     UserTeam userTeam = dataSnapshot.getValue(UserTeam.class);
-                    Log.d(TAG, "Got food: " + userTeam);
+                    Log.d(TAG, "Got User Team: " + userTeam);
                     userTeams.add(userTeam);
                 });
 
