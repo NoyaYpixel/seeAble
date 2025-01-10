@@ -33,7 +33,7 @@ Button btnAddChild, btnAddTeamMember, btnAddComment;
         btnAddChild.setOnClickListener(this);
         btnAddTeamMember=findViewById(R.id.btnAddTeamMember);
         btnAddTeamMember.setOnClickListener(this);
-        btnAddComment=findViewById(R.id.btnAddComment);
+        btnAddComment=findViewById(R.id.btnSendMessage);
         btnAddComment.setOnClickListener(this);
     }
 

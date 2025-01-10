@@ -40,8 +40,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         });
         initViews();
         User user = SharedPreferencesUtil.getUser(this);
-        etEmail.setText(user.getEmail());
-        etPassword.setText(user.getPassword());
+        if (user != null) {
+            etEmail.setText(user.getEmail());
+            etPassword.setText(user.getPassword());
+        }
     }
 
     private void initViews() {
@@ -67,7 +69,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         // Sign in success, update UI with the signed-in user's information
                         SharedPreferencesUtil.saveUser(Login.this, user);
                         Log.d("TAG", "signInWithEmail:success");
-                        Intent go = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent go = new Intent(getApplicationContext(), AdminPage.class);
                         startActivity(go);
                     }
 

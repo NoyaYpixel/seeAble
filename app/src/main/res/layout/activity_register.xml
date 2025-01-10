@@ -8,53 +8,6 @@
     android:background="#C2DCE1"
     tools:context=".screens.Register">
 
-    <EditText
-        android:id="@+id/etLname"
-        android:layout_width="341dp"
-        android:layout_height="54dp"
-        android:ems="10"
-        android:fontFamily="@font/assistantsemibold"
-        android:hint="שם משפחה"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <EditText
-        android:id="@+id/etFname"
-        android:layout_width="341dp"
-        android:layout_height="54dp"
-        android:ems="10"
-        android:fontFamily="@font/assistantsemibold"
-        android:hint="שם פרטי"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="341dp"
-        android:layout_height="54dp"
-        android:ems="10"
-        android:fontFamily="@font/assistantsemibold"
-        android:gravity="right"
-        android:hint="סיסמה"
-        android:inputType="textPassword"
-        android:textSize="20sp"
-        android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -72,19 +25,54 @@
         app:layout_constraintVertical_bias="0.072" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etPassword"
         android:layout_width="341dp"
         android:layout_height="54dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
-        android:hint="כתובת אימייל"
-        android:inputType="textEmailAddress"
+        android:gravity="right"
+        android:hint="סיסמה"
+        android:inputType="textPassword"
+        android:textSize="20sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <EditText
+        android:id="@+id/etFname"
+        android:layout_width="341dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:fontFamily="@font/assistantsemibold"
+        android:hint="שם פרטי"
+        android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.245" />
+
+    <EditText
+        android:id="@+id/etLname"
+        android:layout_width="341dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:fontFamily="@font/assistantsemibold"
+        android:hint="שם משפחה"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
 
     <EditText
         android:id="@+id/etPhone"
@@ -98,9 +86,26 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
+        app:layout_constraintVertical_bias="0.42" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="341dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:fontFamily="@font/assistantsemibold"
+        android:hint="כתובת אימייל"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
     <EditText
         android:id="@+id/etAddress"
@@ -114,8 +119,8 @@
 
     <Button
         android:id="@+id/btnReg"
-        android:layout_width="161dp"
-        android:layout_height="43dp"
+        android:layout_width="339dp"
+        android:layout_height="47dp"
         android:background="#B1AEAE"
         android:fontFamily="@font/asakimboldwebfont"
         android:text="הרשם"
@@ -123,40 +128,8 @@
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
-
-    <RadioGroup
-        android:layout_width="135dp"
-        android:layout_height="92dp"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="487dp">
-
-        <RadioButton
-            android:id="@+id/rdbParent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:text="הורה"
-            android:textSize="20sp"
-            android:fontFamily="@font/assistantsemibold"
-            android:textColor="#555454"
-            />
-
-        <RadioButton
-            android:id="@+id/rdbKindergardenStaff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:text="צוות הגן"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="485dp"
-            android:textSize="20sp"
-            android:fontFamily="@font/assistantsemibold"
-            android:textColor="#555454"/>
-    </RadioGroup>
-
+        app:layout_constraintVertical_bias="0.844" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
