@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.SendAPublicMessage"
+    android:background="#C2DCE1">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="339dp"
+        android:layout_height="135dp"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:gravity="center"
+        android:text="שליחת הודעת תפוצה"
+        android:textColor="#878686"
+        android:textSize="60dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="137dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="339dp"
+        android:layout_height="47dp"
+        android:background="#B1AEAE"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:text="שלח הודעה"
+        android:textColor="#5E5C5C"
+        android:textSize="35dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="429dp" />
+
+    <Spinner
+        android:layout_width="128dp"
+        android:layout_height="37dp"
+        android:entries="@array/arrWho"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="211dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:fontFamily="@font/assistantsemibold"
+        android:hint="תוכן ההודעה"
+        android:inputType="text"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="315dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

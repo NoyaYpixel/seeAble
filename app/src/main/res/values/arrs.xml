@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrWho">
+        <item>אל מי לשלוח?</item>
+        <item>צוות</item>
+        <item>הורים</item>
+        <item>לצוות ולהורים</item>
+    </string-array>
+</resources>

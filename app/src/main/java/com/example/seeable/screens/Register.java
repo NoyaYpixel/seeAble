@@ -70,7 +70,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        authenticationService.signUp(email, password, new AuthenticationService.AuthCallback() {
+        authenticationService.signUp(email, password, new AuthenticationService.AuthCallback<String>() {
             @Override
             public void onCompleted(String uid) {
                 // Sign in success, update UI with the signed-in user's information

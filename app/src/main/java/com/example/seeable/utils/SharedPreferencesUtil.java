@@ -82,7 +82,7 @@ public class SharedPreferencesUtil {
         String phone = sharedPreferences.getString("phone","");
         String email = sharedPreferences.getString("email", "");
         String password = sharedPreferences.getString("password", "");
-        return new User();
+        return new User(id,fname,lname,phone,email,password);
     }
 
     public static void signOutUser(Context context) {

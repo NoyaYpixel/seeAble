@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.seeable.model.Child;
 import com.example.seeable.model.User;
 import com.example.seeable.model.UserTeam;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -72,11 +73,11 @@ public class DatabaseService {
     }
 
     public void createNewUser(User user, DatabaseCallback<Object> callback) {
-        writeData("users/" + user.getId(), user, callback);
+        writeData("Users/" + user.getId(), user, callback);
     }
 
     public void getUser(String userId, DatabaseCallback<User> callback) {
-        getData("users/" + userId, User.class, callback);
+        getData("Users/" + userId, User.class, callback);
     }
 
     public void createNewUserTeam(UserTeam userTeam, DatabaseCallback<Object> callback) {
@@ -112,6 +113,45 @@ public class DatabaseService {
 
                 if (callback != null) {
                     callback.onCompleted(userTeams);
+                }
+            }
+        });
+    }
+
+
+    public void createNewChild(Child child, DatabaseCallback<Object> callback) {
+        writeData("AddChild/" + child.getId(), child, callback);
+    }
+
+    public String getNewChildId() {
+        return databaseReference.child("AddChild").push().getKey();
+    }
+
+
+    public void getChild(String ChildId, DatabaseCallback<Child> callback) {
+        getData("child/" + ChildId, Child.class, callback);
+    }
+
+    public void getChildren(DatabaseCallback<List<Child>> callback) {
+        readData("children").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e(TAG, "Error getting data", task.getException());
+                    if (callback != null) {
+                        callback.onFailed(task.getException());
+                    }
+                    return;
+                }
+                List<Child> children = new ArrayList<>();
+                task.getResult().getChildren().forEach(dataSnapshot -> {
+                    Child child = dataSnapshot.getValue(Child.class);
+                    Log.d(TAG, "Got User Team: " + child);
+                    children.add(child);
+                });
+
+                if (callback != null) {
+                    callback.onCompleted(children);
                 }
             }
         });

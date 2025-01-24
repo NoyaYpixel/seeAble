@@ -20,6 +20,8 @@ import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.services.DatabaseService;
 import com.example.seeable.utils.SharedPreferencesUtil;
 
+import java.util.Stack;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     EditText etEmail, etPassword;
@@ -27,6 +29,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     String email, pass;
     private AuthenticationService authenticationService;
     private DatabaseService databaseService;
+    private User user=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             return insets;
         });
         initViews();
-        User user = SharedPreferencesUtil.getUser(this);
+         user = SharedPreferencesUtil.getUser(this);
         if (user != null) {
             etEmail.setText(user.getEmail());
             etPassword.setText(user.getPassword());
@@ -60,14 +63,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         email = etEmail.getText().toString();
         pass = etPassword.getText().toString();
-        authenticationService.signIn(email, pass, new AuthenticationService.AuthCallback() {
+        authenticationService.signIn(email, pass, new AuthenticationService.AuthCallback<String>() {
             @Override
             public void onCompleted(String uid) {
                 databaseService.getUser(uid, new DatabaseService.DatabaseCallback<User>() {
                     @Override
                     public void onCompleted(User user) {
                         // Sign in success, update UI with the signed-in user's information
-                        SharedPreferencesUtil.saveUser(Login.this, user);
+                       // SharedPreferencesUtil.saveUser(Login.this, user);
                         Log.d("TAG", "signInWithEmail:success");
                         Intent go = new Intent(getApplicationContext(), AdminPage.class);
                         startActivity(go);
