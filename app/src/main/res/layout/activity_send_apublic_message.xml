@@ -6,19 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.SendAPublicMessage"
-    android:background="#C2DCE1">
+    android:background="#FFCEF0FF">
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="339dp"
         android:layout_height="135dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/asakimboldwebfont"
         android:gravity="center"
         android:text="שליחת הודעת תפוצה"
         android:textColor="#878686"
         android:textSize="60dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="137dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button2"
@@ -29,26 +33,35 @@
         android:text="שלח הודעה"
         android:textColor="#5E5C5C"
         android:textSize="35dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="429dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
 
     <Spinner
-        android:layout_width="128dp"
-        android:layout_height="37dp"
+        android:layout_width="170dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:entries="@array/arrWho"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="330dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="211dp"
-        android:layout_height="52dp"
+        android:layout_width="161dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="52dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="תוכן ההודעה"
         android:inputType="text"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

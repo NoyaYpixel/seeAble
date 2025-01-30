@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.ChildrenList">
+    tools:context=".screens.ChildrenList"
+    android:background="#FFCEF0FF">
 
     <TableLayout
         android:layout_width="419dp"

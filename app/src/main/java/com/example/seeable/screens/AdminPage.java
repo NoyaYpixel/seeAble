@@ -51,7 +51,7 @@ Button btnAddChild, btnAddTeamMember, btnAddComment;
         }
         if(view==btnAddComment)
         {
-            Intent go=new Intent(getApplicationContext(), MainActivity.class);//לא אמור להישלח לדף הראשי צריך לשנות!!
+            Intent go=new Intent(getApplicationContext(), SendAPublicMessage.class);
             startActivity(go);
         }
     }
