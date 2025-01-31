@@ -12,6 +12,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
+import com.example.seeable.services.AuthenticationService;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminPage extends AppCompatActivity implements View.OnClickListener {
 Button btnAddChild, btnAddTeamMember, btnAddComment;
@@ -54,5 +62,26 @@ Button btnAddChild, btnAddTeamMember, btnAddComment;
             Intent go=new Intent(getApplicationContext(), SendAPublicMessage.class);
             startActivity(go);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu from the XML resource
+        getMenuInflater().inflate(R.menu.menu_main, menu);  // יוצר את התפריט עם ה-XML שיצרנו
+        return true;  // מחזיר true כדי שהתפריט יוצג
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // טיפול במצב של בחירת פריט בתפריט
+        if (item.getItemId()==R.id.signOut)
+            {
+                AuthenticationService.getInstance().signOut();
+                Intent go = new Intent(this,MainActivity.class);
+                startActivity(go);
+                Toast.makeText(this, "התנתקת בהצלחה :)", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        return onOptionsItemSelected(item);
     }
 }
