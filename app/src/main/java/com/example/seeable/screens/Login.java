@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
 import com.example.seeable.model.User;
+import com.example.seeable.model.UserTeam;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.services.DatabaseService;
 import com.example.seeable.utils.SharedPreferencesUtil;
@@ -72,7 +73,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         // Sign in success, update UI with the signed-in user's information
                        // SharedPreferencesUtil.saveUser(Login.this, user);
                         Log.d("TAG", "signInWithEmail:success");
-                        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+                        Intent go = new Intent(getApplicationContext(), AddUserTeam.class);
                         startActivity(go);
                     }
 

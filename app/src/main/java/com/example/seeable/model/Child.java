@@ -1,24 +1,18 @@
 package com.example.seeable.model;
 
 public class Child {
-    String id;
-    String fname;
-    String lname;
-    User parent;
-    String birthDate;
+    String id, fname, lname, birthDate, details, userId;
 
-    String details;
+    public Child() {
+    }
 
-    public Child(String id, String fname, String lname, User parent, String birthDate, String details) {
+    public Child(String id, String fname, String lname, String birthDate, String details, String userId) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
-        this.parent = parent;
         this.birthDate = birthDate;
         this.details = details;
-    }
-
-    public Child() {
+        this.userId = userId;
     }
 
     public String getId() {
@@ -45,14 +39,6 @@ public class Child {
         this.lname = lname;
     }
 
-    public User getParent() {
-        return parent;
-    }
-
-    public void setParent(User parent) {
-        this.parent = parent;
-    }
-
     public String getBirthDate() {
         return birthDate;
     }
@@ -69,15 +55,23 @@ public class Child {
         this.details = details;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Child{" +
                 "id='" + id + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
-                ", parent=" + parent +
                 ", birthDate='" + birthDate + '\'' +
                 ", details='" + details + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

@@ -44,7 +44,7 @@ public class DatabaseService {
         return instance;
     }
 
-    private void writeData(String path, Object data, @Nullable DatabaseCallback callback) {
+    private void writeData(String path, Object data, @Nullable DatabaseCallback<Object> callback) {
         databaseReference.child(path).setValue(data).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (callback == null) return;
@@ -68,6 +68,36 @@ public class DatabaseService {
         });
     }
 
+    /// get a list of data from the database at a specific path
+    /// @param path the path to get the data from
+    /// @param clazz the class of the objects to return
+    /// @param callback the callback to call when the operation is completed
+    private <T> void getDataList(@NotNull final String path, @NotNull final Class<T> clazz, @NotNull final DatabaseCallback<List<T>> callback) {
+        readData(path).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e(TAG, "Error getting data", task.getException());
+                callback.onFailed(task.getException());
+                return;
+            }
+            List<T> tList = new ArrayList<>();
+            task.getResult().getChildren().forEach(dataSnapshot -> {
+                T t = dataSnapshot.getValue(clazz);
+                tList.add(t);
+            });
+
+            callback.onCompleted(tList);
+        });
+    }
+
+    /// generate a new id for a new object in the database
+    /// @param path the path to generate the id for
+    /// @return a new id for the object
+    /// @see String
+    /// @see DatabaseReference#push()
+    private String generateNewId(@NotNull final String path) {
+        return databaseReference.child(path).push().getKey();
+    }
+
     private DatabaseReference readData(String path) {
         return databaseReference.child(path);
     }
@@ -80,12 +110,16 @@ public class DatabaseService {
         getData("Users/" + userId, User.class, callback);
     }
 
+    public void getUsers(DatabaseCallback<List<User>> callback) {
+        getDataList("Users", User.class, callback);
+    }
+
     public void createNewUserTeam(UserTeam userTeam, DatabaseCallback<Object> callback) {
         writeData("userTeams/" + userTeam.getId(), userTeam, callback);
     }
 
-    public String getNewFoodId() {
-        return databaseReference.child("foods").push().getKey();
+    public String getNewUserTeamId() {
+        return generateNewId("userTeams");
     }
 
 
@@ -94,37 +128,16 @@ public class DatabaseService {
     }
 
     public void getUserTeams(DatabaseCallback<List<UserTeam>> callback) {
-        readData("userTeams").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e(TAG, "Error getting data", task.getException());
-                    if (callback != null) {
-                        callback.onFailed(task.getException());
-                    }
-                    return;
-                }
-                List<UserTeam> userTeams = new ArrayList<>();
-                task.getResult().getChildren().forEach(dataSnapshot -> {
-                    UserTeam userTeam = dataSnapshot.getValue(UserTeam.class);
-                    Log.d(TAG, "Got User Team: " + userTeam);
-                    userTeams.add(userTeam);
-                });
-
-                if (callback != null) {
-                    callback.onCompleted(userTeams);
-                }
-            }
-        });
+        getDataList("userTeams", UserTeam.class, callback);
     }
 
 
     public void createNewChild(Child child, DatabaseCallback<Object> callback) {
-        writeData("AddChild/" + child.getId(), child, callback);
+        writeData("child/" + child.getId(), child, callback);
     }
 
     public String getNewChildId() {
-        return databaseReference.child("AddChild").push().getKey();
+        return generateNewId("child");
     }
 
 
@@ -133,28 +146,7 @@ public class DatabaseService {
     }
 
     public void getChildren(DatabaseCallback<List<Child>> callback) {
-        readData("children").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e(TAG, "Error getting data", task.getException());
-                    if (callback != null) {
-                        callback.onFailed(task.getException());
-                    }
-                    return;
-                }
-                List<Child> children = new ArrayList<>();
-                task.getResult().getChildren().forEach(dataSnapshot -> {
-                    Child child = dataSnapshot.getValue(Child.class);
-                    Log.d(TAG, "Got User Team: " + child);
-                    children.add(child);
-                });
-
-                if (callback != null) {
-                    callback.onCompleted(children);
-                }
-            }
-        });
+        getDataList("child", Child.class, callback);
     }
 
 }
