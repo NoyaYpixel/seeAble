@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.seeable.model.Child;
+import com.example.seeable.model.Message;
 import com.example.seeable.model.User;
 import com.example.seeable.model.UserTeam;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -148,5 +149,25 @@ public class DatabaseService {
     public void getChildren(DatabaseCallback<List<Child>> callback) {
         getDataList("child", Child.class, callback);
     }
+
+
+
+    public void createNewMessage(Message message, DatabaseCallback<Object> callback) {
+        writeData("message/" + message.getId(), message, callback);
+    }
+
+    public String getNewMessageId() {
+        return generateNewId("message");
+    }
+
+
+    public void getMessage(String messageId, DatabaseCallback<Message> callback) {
+        getData("message/" + messageId, Message.class, callback);
+    }
+
+    public void getMessages(DatabaseCallback<List<Message>> callback) {
+        getDataList("message", Message.class, callback);
+    }
+
 
 }
