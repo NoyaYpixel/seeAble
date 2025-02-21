@@ -16,12 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
 import com.example.seeable.model.User;
-import com.example.seeable.model.UserTeam;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.services.DatabaseService;
 import com.example.seeable.utils.SharedPreferencesUtil;
-
-import java.util.Stack;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 

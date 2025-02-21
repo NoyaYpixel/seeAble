@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public void onCompleted(String uid) {
                 // Sign in success, update UI with the signed-in user's information
                 Log.d("TAG", "createUserWithEmail:success");
-                User newUser = new User(uid, fname, lname, phone, email, password);
+                User newUser = new User(uid, fname, lname, phone, email, password, null, false);
 
                 databaseService.createNewUser(newUser, new DatabaseService.DatabaseCallback<Object>() {
                     @Override

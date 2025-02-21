@@ -2,15 +2,11 @@ package com.example.seeable.services;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.seeable.model.Child;
 import com.example.seeable.model.Message;
 import com.example.seeable.model.User;
-import com.example.seeable.model.UserTeam;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,7 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseService {
 
@@ -113,23 +111,6 @@ public class DatabaseService {
 
     public void getUsers(DatabaseCallback<List<User>> callback) {
         getDataList("Users", User.class, callback);
-    }
-
-    public void createNewUserTeam(UserTeam userTeam, DatabaseCallback<Object> callback) {
-        writeData("userTeams/" + userTeam.getId(), userTeam, callback);
-    }
-
-    public String getNewUserTeamId() {
-        return generateNewId("userTeams");
-    }
-
-
-    public void getUserTeam(String UserTeamId, DatabaseCallback<UserTeam> callback) {
-        getData("userTeams/" + UserTeamId, UserTeam.class, callback);
-    }
-
-    public void getUserTeams(DatabaseCallback<List<UserTeam>> callback) {
-        getDataList("userTeams", UserTeam.class, callback);
     }
 
 

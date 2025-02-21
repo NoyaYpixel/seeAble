@@ -2,9 +2,6 @@ package com.example.seeable.screens;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,15 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.seeable.R;
 import com.example.seeable.model.User;
-import com.example.seeable.model.UsersAdapter;
+import com.example.seeable.adapters.UsersAdapter;
 import com.example.seeable.services.DatabaseService;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddUserTeam extends AppCompatActivity {

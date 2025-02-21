@@ -1,4 +1,4 @@
-package com.example.seeable.model;
+package com.example.seeable.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.seeable.R;
+import com.example.seeable.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

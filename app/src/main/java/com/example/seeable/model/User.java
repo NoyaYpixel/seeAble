@@ -3,19 +3,22 @@ package com.example.seeable.model;
 public class User {
 
     String id;
-    String fname, lname, phone, email, password;
+    String fname, lname, phone, email, password, position;
+    boolean isAdmin;
 
     public User() {
     }
-    public User(String id, String fname, String lname, String phone, String email, String password) {
+
+    public User(String id, String fname, String lname, String phone, String email, String password, String position, boolean isAdmin) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.position = position;
+        this.isAdmin = isAdmin;
     }
-
 
     public String getId() {
         return id;
@@ -65,6 +68,22 @@ public class User {
         this.password = password;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -74,6 +93,8 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", position='" + position + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }
