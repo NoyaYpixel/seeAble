@@ -169,5 +169,56 @@ public class DatabaseService {
         getDataList("message", Message.class, callback);
     }
 
+    public <T> void createNewClassRef(String uid, Class<T> clazz, DatabaseCallback<Object> callback) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(uid, clazz.getName());
+        databaseReference.child("classes").updateChildren(map).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (callback == null) return;
+                callback.onCompleted(null);
+            } else {
+                if (callback == null) return;
+                callback.onFailed(task.getException());
+            }
+        });
+    }
+
+    public void getClassRef(String uid, DatabaseCallback<String> callback) {
+        databaseReference.child("classes").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot dataSnapshot = task.getResult();
+                if (dataSnapshot.exists()) {
+                    Map<String, String> map = (Map<String, String>) dataSnapshot.getValue();
+                    if (map == null) {
+                        if (callback != null) {
+                            callback.onFailed(new Exception("classes not exist"));
+                        }
+                        return;
+                    }
+                    Log.d(TAG, map.toString());
+                    Log.d(TAG, uid);
+                    if (!map.containsKey(uid)) {
+                        if (callback != null) {
+                            callback.onFailed(new Exception("classes for uid not exist"));
+                        }
+                        return;
+                    }
+                    String className = map.get(uid);
+                    if (callback != null) {
+                        callback.onCompleted(className);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailed(new Exception("Class not exist"));
+                    }
+                }
+            } else {
+                if (callback != null) {
+                    callback.onFailed(task.getException());
+                }
+            }
+        });
+    }
+
 
 }
