@@ -3,15 +3,15 @@ package com.example.seeable.model;
 public class Comment {
     String id;
     Child  child;
-    UserTeam userTeam;
+    User user;
     String date;
 
     String details;
 
-    public Comment(String id, Child child, UserTeam userTeam, String date, String details) {
+    public Comment(String id, Child child, User userTeam, String date, String details) {
         this.id = id;
         this.child = child;
-        this.userTeam = userTeam;
+        this.user = userTeam;
         this.date = date;
         this.details = details;
     }
@@ -35,12 +35,12 @@ public class Comment {
         this.child = child;
     }
 
-    public UserTeam getUserTeam() {
-        return userTeam;
+    public User getUserTeam() {
+        return user;
     }
 
-    public void setUserTeam(UserTeam userTeam) {
-        this.userTeam = userTeam;
+    public void setUserTeam(User userTeam) {
+        this.user = userTeam;
     }
 
     public String getDate() {
@@ -64,7 +64,7 @@ public class Comment {
         return "Comment{" +
                 "id='" + id + '\'' +
                 ", child=" + child +
-                ", userTeam=" + userTeam +
+                ", userTeam=" + user +
                 ", date='" + date + '\'' +
                 ", details='" + details + '\'' +
                 '}';
