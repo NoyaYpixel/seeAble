@@ -47,6 +47,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         if (user == null) return;
 
         holder.userFNameTextView.setText(user.getFname());
+        holder.userLNameTextView.setText(user.getLname());
     }
 
     @Override
@@ -56,10 +57,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView userFNameTextView;
+        public final TextView userLNameTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             userFNameTextView = itemView.findViewById(R.id.user_fname_text_view);
+            userLNameTextView = itemView.findViewById(R.id.user_fname_text_view);
         }
     }
 
