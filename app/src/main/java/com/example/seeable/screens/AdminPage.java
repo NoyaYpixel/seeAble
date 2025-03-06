@@ -54,7 +54,7 @@ Button btnAddChild, btnAddTeamMember, btnAddComment;
         }
         if(view==btnAddTeamMember)
         {
-            Intent go=new Intent(getApplicationContext(), AddUserTeam.class);
+            Intent go=new Intent(getApplicationContext(), AllUsers.class);
             startActivity(go);
         }
         if(view==btnAddComment)
