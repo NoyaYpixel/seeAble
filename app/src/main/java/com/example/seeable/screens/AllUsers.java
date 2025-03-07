@@ -38,7 +38,12 @@ public class AllUsers extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_users);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        usersAdapter = new UsersAdapter();
+        usersAdapter = new UsersAdapter(new UsersAdapter.OnUserListener() {
+            @Override
+            public void onSwitch(boolean isChecked) {
+                // TODO
+            }
+        });
         recyclerView.setAdapter(usersAdapter);
 
         databaseService.getUsers(new DatabaseService.DatabaseCallback<List<User>>() {

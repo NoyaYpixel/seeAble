@@ -42,7 +42,12 @@ public class AddUserTeam extends AppCompatActivity {
         databaseService = DatabaseService.getInstance();
 
         usersRecyclerView = findViewById(R.id.usersRecyclerView);
-        usersAdapter = new UsersAdapter();
+        usersAdapter = new UsersAdapter(new UsersAdapter.OnUserListener() {
+            @Override
+            public void onSwitch(boolean isChecked) {
+                //TODO
+            }
+        });
 
         usersRecyclerView.setAdapter(usersAdapter);
 

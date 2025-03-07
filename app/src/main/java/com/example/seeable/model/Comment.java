@@ -8,6 +8,7 @@ public class Comment {
 
     String details;
 
+    
     public Comment(String id, Child child, User userTeam, String date, String details) {
         this.id = id;
         this.child = child;

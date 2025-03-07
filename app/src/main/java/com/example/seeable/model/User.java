@@ -2,6 +2,22 @@ package com.example.seeable.model;
 
 public class User {
 
+    public enum Position {
+        Manager("Manager"),
+        Team("Team"),
+        Normal("Normal");
+
+        private final String type;
+
+        Position(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return this.type;
+        }
+    }
+
     String id;
     String fname, lname, phone, email, password, position;
     boolean isAdmin;

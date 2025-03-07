@@ -3,6 +3,8 @@ package com.example.seeable.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +18,16 @@ import java.util.List;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
 
-    List<User> users;
+    public interface OnUserListener {
+        void onSwitch(boolean isChecked);
+    }
 
-    public UsersAdapter() {
+    List<User> users;
+    OnUserListener onUserListener;
+
+    public UsersAdapter(OnUserListener onUserListener) {
         users = new ArrayList<>();
+        this.onUserListener = onUserListener;
     }
 
     public void setUsers(@NonNull List<User> users) {
@@ -48,6 +56,14 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
         holder.userFNameTextView.setText(user.getFname());
         holder.userLNameTextView.setText(user.getLname());
+        holder.switchUser.setChecked(user.getPosition().equals(User.Position.Team.getType()));
+
+        holder.switchUser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onUserListener.onSwitch(isChecked);
+            }
+        });
     }
 
     @Override
@@ -58,11 +74,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView userFNameTextView;
         public final TextView userLNameTextView;
+        public final Switch switchUser;
 
         public ViewHolder(View itemView) {
             super(itemView);
             userFNameTextView = itemView.findViewById(R.id.user_fname_text_view);
             userLNameTextView = itemView.findViewById(R.id.user_lname_text_view);
+            switchUser = itemView.findViewById(R.id.switch_user);
         }
     }
 
