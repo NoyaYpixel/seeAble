@@ -1,5 +1,6 @@
 package com.example.seeable.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,10 @@ import java.util.List;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
 
+    private static final String TAG = "UsersAdapter";
+
     public interface OnUserListener {
-        void onSwitch(boolean isChecked);
+        void onSwitch(User user, boolean isChecked);
     }
 
     List<User> users;
@@ -54,14 +57,16 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         User user = this.users.get(position);
         if (user == null) return;
 
+        Log.d(TAG, "user: " + user);
+
         holder.userFNameTextView.setText(user.getFname());
         holder.userLNameTextView.setText(user.getLname());
-        holder.switchUser.setChecked(user.getPosition().equals(User.Position.Team.getType()));
+        holder.switchUser.setChecked(user.getPosition() != null && user.getPosition().equals(User.Position.Team.getType()));
 
         holder.switchUser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                onUserListener.onSwitch(isChecked);
+                onUserListener.onSwitch(user, isChecked);
             }
         });
     }

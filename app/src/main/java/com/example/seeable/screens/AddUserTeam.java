@@ -2,6 +2,7 @@ package com.example.seeable.screens;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 public class AddUserTeam extends AppCompatActivity {
+    private static final String TAG = "AddUserTeam";
     RecyclerView usersRecyclerView;
     UsersAdapter usersAdapter;
 
@@ -44,8 +46,24 @@ public class AddUserTeam extends AppCompatActivity {
         usersRecyclerView = findViewById(R.id.usersRecyclerView);
         usersAdapter = new UsersAdapter(new UsersAdapter.OnUserListener() {
             @Override
-            public void onSwitch(boolean isChecked) {
-                //TODO
+            public void onSwitch(User user, boolean isChecked) {
+                Log.d(TAG, "Add UserTeam");
+                if (isChecked) {
+                    user.setPosition(User.Position.Team.getType());
+                } else {
+                    user.setPosition(null);
+                }
+                databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Object>() {
+                    @Override
+                    public void onCompleted(Object object) {
+
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+
+                    }
+                });
             }
         });
 

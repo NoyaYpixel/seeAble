@@ -1,6 +1,7 @@
 package com.example.seeable.screens;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.example.seeable.services.DatabaseService;
 import java.util.List;
 
 public class AllUsers extends AppCompatActivity {
+    private static final String TAG = "AllUsers";
 
     DatabaseService databaseService;
 
@@ -40,8 +42,24 @@ public class AllUsers extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         usersAdapter = new UsersAdapter(new UsersAdapter.OnUserListener() {
             @Override
-            public void onSwitch(boolean isChecked) {
-                // TODO
+            public void onSwitch(User user, boolean isChecked) {
+                Log.d(TAG, "All Users");
+                if (isChecked) {
+                    user.setPosition(User.Position.Team.getType());
+                } else {
+                    user.setPosition(null);
+                }
+                databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Object>() {
+                    @Override
+                    public void onCompleted(Object object) {
+
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+
+                    }
+                });
             }
         });
         recyclerView.setAdapter(usersAdapter);
@@ -57,7 +75,5 @@ public class AllUsers extends AppCompatActivity {
 
             }
         });
-
     }
-
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -16,9 +17,8 @@ import com.example.seeable.R;
 import com.example.seeable.services.AuthenticationService;
 
 public class AddChild extends AppCompatActivity {
-    EditText id, fname, lname, birthDate, details;
+    EditText id, fname, lname, birthdayC, details;
     Button btnAddChild;
-
     AuthenticationService authenticationService;
 
     @Override
@@ -39,6 +39,8 @@ public class AddChild extends AppCompatActivity {
         id = findViewById(R.id.etCId);
         fname = findViewById(R.id.etCFName);
         lname = findViewById(R.id.etCLName);
+        birthdayC = findViewById(R.id.birthdayC);
+        details = findViewById(R.id.etCommentsC);
     }
 
     public void onClick(View view) {
