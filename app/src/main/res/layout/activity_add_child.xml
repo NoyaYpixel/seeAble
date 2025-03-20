@@ -11,11 +11,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
         android:background="#B1AEAE"
         android:fontFamily="@font/asakimboldwebfont"
         android:text="רשום"
@@ -23,115 +20,103 @@
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvbirthdayC" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.904" />
 
     <CalendarView
         android:id="@+id/birthdayC"
-        android:layout_width="219dp"
-        android:layout_height="178dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="201dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="225dp"
+        android:layout_height="219dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etCFName"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/tvbirthdayC" />
 
     <EditText
         android:id="@+id/etCLName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="52dp"
+        android:layout_width="355dp"
+        android:layout_height="47dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם משפחה"
         android:inputType="text"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/etCommentsC"
-        app:layout_constraintEnd_toEndOf="@+id/etCId"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etCId"
-        app:layout_constraintTop_toBottomOf="@+id/etCFName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="222dp" />
 
     <TextView
         android:id="@+id/tvbirthdayC"
         android:layout_width="188dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="175dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/assistantsemibold"
         android:text="הוסף תאריך לידה :"
         android:textColor="#4C4C4C"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCommentsC" />
+        tools:layout_editor_absoluteY="370dp" />
 
     <EditText
         android:id="@+id/etCommentsC"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="355dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="4dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="הערות נוספות (אלרגיות וכו'..)"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tvbirthdayC"
-        app:layout_constraintEnd_toEndOf="@+id/tvbirthdayC"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/birthdayC"
-        app:layout_constraintTop_toBottomOf="@+id/etCLName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etCId"
-        android:layout_width="0dp"
+        android:layout_width="355dp"
         android:layout_height="53dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginBottom="51dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="מס' תעודת זהות"
         android:inputType="text"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etCommentsC"
-        app:layout_constraintEnd_toEndOf="@+id/etCommentsC"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etCommentsC"
-        app:layout_constraintTop_toTopOf="@+id/etCLName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCLName" />
 
     <EditText
         android:id="@+id/etCFName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="355dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="172dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם פרטי"
         android:inputType="text"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/etCLName"
-        app:layout_constraintEnd_toEndOf="@+id/etCLName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etCLName"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/asakimboldwebfont"
-        android:text="רישום-ילד"
-        android:textColor="#878686"
-        android:textSize="70sp"
-        android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/etCFName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="275dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/horevclmheavywebfont"
+        android:gravity="center"
+        android:text="רישום-ילד"
+        android:textColor="#878686"
+        android:textSize="90sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/etCLName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

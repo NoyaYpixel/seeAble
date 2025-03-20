@@ -67,10 +67,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 databaseService.getUser(uid, new DatabaseService.DatabaseCallback<User>() {
                     @Override
                     public void onCompleted(User user) {
+                        SharedPreferencesUtil.saveUser(Login.this, user);
                         // Sign in success, update UI with the signed-in user's information
                        // SharedPreferencesUtil.saveUser(Login.this, user);
                         Log.d("TAG", "signInWithEmail:success");
-                        Intent go = new Intent(getApplicationContext(), SendAPublicMessage.class);
+                        Intent go = new Intent(getApplicationContext(), AddChild.class);
                         startActivity(go);
                     }
 

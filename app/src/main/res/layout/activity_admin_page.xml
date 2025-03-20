@@ -9,117 +9,87 @@
     tools:context=".screens.AdminPage">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="396dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="59dp"
-        android:fontFamily="@font/osluizi"
+        android:id="@+id/textView4"
+        android:layout_width="374dp"
+        android:layout_height="89dp"
+        android:fontFamily="@font/horevclmheavywebfont"
         android:gravity="center"
-        android:text="הרשאות מנהל/ת"
+        android:text="הרשאות מנהל.ת"
         android:textColor="#878686"
-        android:textSize="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddChild"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="90sp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="153dp" />
 
     <Button
-        android:id="@+id/btnAddTeamMember"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="12dp"
+        android:id="@+id/btnAddChild"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
         android:background="#5C91EC"
         android:text="+"
         android:textSize="45sp"
         android:typeface="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/btnSendMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddChild" />
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="285dp" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="12dp"
-        android:background="#DDDDDD"
-        android:fontFamily="@font/assistantsemibold"
-        android:gravity="center"
-        android:text="הוספת    איש צוות"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAddTeamMember"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddTeamMember"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnAddTeamMember" />
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
+        android:background="#5C91EC"
+        android:text="+"
+        android:textSize="45sp"
+        android:typeface="monospace"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="443dp" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
         android:background="#DDDDDD"
         android:fontFamily="@font/assistantsemibold"
         android:gravity="center"
         android:text="הוספת ילד"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAddChild"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddChild"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnAddChild" />
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="285dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
+        android:background="#DDDDDD"
+        android:fontFamily="@font/assistantsemibold"
+        android:gravity="center"
+        android:text="הוספת           איש צוות"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="364dp" />
 
     <Button
-        android:id="@+id/btnAddChild"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="11dp"
+        android:id="@+id/btnAddTeamMember"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
         android:background="#5C91EC"
         android:text="+"
         android:textSize="45sp"
         android:typeface="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddTeamMember"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <Button
-        android:id="@+id/btnSendMessage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="298dp"
-        android:background="#5C91EC"
-        android:text="+"
-        android:textSize="45sp"
-        android:typeface="monospace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddTeamMember" />
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="364dp" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
         android:background="#DDDDDD"
         android:fontFamily="@font/assistantsemibold"
         android:gravity="center"
         android:text="שליחת הודעת תפוצה"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSendMessage"
-        app:layout_constraintEnd_toStartOf="@+id/btnSendMessage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSendMessage" />
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="443dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
