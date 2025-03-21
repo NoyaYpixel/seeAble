@@ -18,7 +18,7 @@
         android:textColor="#878686"
         android:textSize="90sp"
         tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="153dp" />
+        tools:layout_editor_absoluteY="103dp" />
 
     <Button
         android:id="@+id/btnAddChild"
@@ -28,19 +28,8 @@
         android:text="+"
         android:textSize="45sp"
         android:typeface="monospace"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="285dp" />
-
-    <Button
-        android:id="@+id/btnSendMessage"
-        android:layout_width="108dp"
-        android:layout_height="71dp"
-        android:background="#5C91EC"
-        android:text="+"
-        android:textSize="45sp"
-        android:typeface="monospace"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="443dp" />
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="279dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -52,21 +41,8 @@
         android:text="הוספת ילד"
         android:textColor="@color/black"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="285dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="108dp"
-        android:layout_height="71dp"
-        android:background="#DDDDDD"
-        android:fontFamily="@font/assistantsemibold"
-        android:gravity="center"
-        android:text="הוספת           איש צוות"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="364dp" />
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="279dp" />
 
     <Button
         android:id="@+id/btnAddTeamMember"
@@ -76,8 +52,19 @@
         android:text="+"
         android:textSize="45sp"
         android:typeface="monospace"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="364dp" />
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="358dp" />
+
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
+        android:background="#5C91EC"
+        android:text="+"
+        android:textSize="45sp"
+        android:typeface="monospace"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="437dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -89,7 +76,20 @@
         android:text="שליחת הודעת תפוצה"
         android:textColor="@color/black"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="443dp" />
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="108dp"
+        android:layout_height="71dp"
+        android:background="#DDDDDD"
+        android:fontFamily="@font/assistantsemibold"
+        android:gravity="center"
+        android:text="הוספת           איש צוות"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="358dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

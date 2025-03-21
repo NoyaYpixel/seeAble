@@ -3,6 +3,7 @@ package com.example.seeable.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.seeable.model.Child;
 import com.example.seeable.model.User;
 
 
@@ -103,6 +104,26 @@ public class SharedPreferencesUtil {
 
     public static boolean isUserLoggedIn(Context context) {
         return contains(context, "id");
+    }
+
+    public static void saveChild(Context context, User user) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", user.getId());
+        editor.putString("fname", user.getFname());
+        editor.putString("lname", user.getLname());
+        editor.putString("birthdayC", user.getPhone());
+        editor.putString("details", user.getEmail());
+        editor.apply();
+    }
+    public static Child getChild(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        String id = sharedPreferences.getString("id", "");
+        String fname = sharedPreferences.getString("fname", "");
+        String lname = sharedPreferences.getString("lname","");
+        String birthdayC = sharedPreferences.getString("birthdayC","");
+        String details = sharedPreferences.getString("details", "");
+        return new Child();
     }
 }
 

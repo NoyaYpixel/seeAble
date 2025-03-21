@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/first_names" />
+        tools:text="@tools:sample/first_names"
+        android:fontFamily="serif"/>
 
     <TextView
         android:id="@+id/user_lname_text_view"
@@ -28,7 +29,8 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/user_fname_text_view"
         app:layout_constraintTop_toTopOf="@+id/user_fname_text_view"
-        tools:text="@tools:sample/last_names" />
+        tools:text="@tools:sample/last_names"
+        android:fontFamily="serif"/>
 
     <Switch
         android:id="@+id/switch_user"

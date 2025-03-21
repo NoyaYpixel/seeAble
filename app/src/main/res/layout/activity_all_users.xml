@@ -5,45 +5,49 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.AllUsers"
-    android:background="#FFCEF0FF">
+    android:background="#FFCEF0FF"
+    tools:context=".screens.AllUsers">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
-        android:layout_width="409dp"
-        android:layout_height="556dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
         tools:listitem="@layout/item_user" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="26dp"
-        android:fontFamily="@font/osluizi"
+        android:fontFamily="@font/horevclmheavywebfont"
+        android:gravity="center"
         android:text="הרשאות משתמשים"
         android:textColor="#878686"
-        android:textSize="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/rv_users"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="106dp"
+        android:layout_marginBottom="37dp"
         android:fontFamily="@font/heebomedium"
         android:text="כדי למנות איש צוות - הפעל את המתג"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintBottom_toTopOf="@+id/rv_users"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,8 @@ import com.example.seeable.R;
 import com.example.seeable.services.AuthenticationService;
 
 public class AddChild extends AppCompatActivity {
-    EditText id, fname, lname, birthdayC, details;
+    EditText id, fname, lname, details;
+    CalendarView birthdayC;
     Button btnAddChild;
     AuthenticationService authenticationService;
 

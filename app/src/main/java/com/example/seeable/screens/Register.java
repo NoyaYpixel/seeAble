@@ -82,7 +82,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     public void onCompleted(Object object) {
                         SharedPreferencesUtil.saveUser(Register.this, newUser);
 
-                        Intent goHome = new Intent(Register.this, MainActivity.class);
+                        Intent goHome = new Intent(Register.this, HomePage.class);
                         goHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(goHome);
                     }

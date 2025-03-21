@@ -8,15 +8,19 @@
     android:background="#FFCEF0FF"
     tools:context=".screens.SendAPublicMessage">
 
-    <Spinner
-        android:id="@+id/spinner_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:entries="@array/arrWho"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="363dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/horevclmheavywebfont"
+        android:gravity="center"
+        android:text="שליחת הודעת תפוצה"
+        android:textColor="#878686"
+        android:textSize="80sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_content"
@@ -29,22 +33,9 @@
         android:inputType="text"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/spinner_message"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spinner_message"
         app:layout_constraintTop_toBottomOf="@+id/spinner_message" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="345dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="166dp"
-        android:fontFamily="@font/asakimboldwebfont"
-        android:gravity="center"
-        android:text="שליחת הודעת תפוצה"
-        android:textColor="#878686"
-        android:textSize="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSendPublicM"
@@ -61,6 +52,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_content"
         app:layout_constraintTop_toBottomOf="@+id/et_content"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.003" />
+
+    <Spinner
+        android:id="@+id/spinner_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:entries="@array/arrWho"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
