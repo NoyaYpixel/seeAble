@@ -13,91 +13,122 @@
         android:id="@+id/button"
         android:layout_width="339dp"
         android:layout_height="47dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="44dp"
         android:background="#B1AEAE"
         android:fontFamily="@font/asakimboldwebfont"
         android:text="רשום"
         android:textColor="#5E5C5C"
         android:textSize="35dp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="636dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayC" />
 
     <CalendarView
         android:id="@+id/birthdayC"
-        android:layout_width="204dp"
-        android:layout_height="257dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="352dp" />
+        android:layout_width="256dp"
+        android:layout_height="330dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCId" />
 
     <EditText
         android:id="@+id/etCLName"
         android:layout_width="355dp"
         android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם משפחה"
         android:inputType="text"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="220dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etCommentsC"
+        app:layout_constraintStart_toStartOf="@+id/etCommentsC"
+        app:layout_constraintTop_toBottomOf="@+id/etCFName" />
 
     <TextView
         android:id="@+id/tvbirthdayC"
-        android:layout_width="188dp"
-        android:layout_height="48dp"
+        android:layout_width="185dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="11dp"
         android:fontFamily="@font/assistantsemibold"
         android:text="הוסף תאריך לידה :"
         android:textColor="#4C4C4C"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toTopOf="@+id/birthdayC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toEndOf="@+id/birthdayC"
+        app:layout_constraintTop_toBottomOf="@+id/etCId"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/etCommentsC"
         android:layout_width="355dp"
         android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="הערות נוספות (אלרגיות וכו'..)"
         android:inputType="text"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="268dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etCId"
+        app:layout_constraintStart_toStartOf="@+id/etCId"
+        app:layout_constraintTop_toBottomOf="@+id/etCLName" />
 
     <EditText
         android:id="@+id/etCId"
         android:layout_width="355dp"
         android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="מס' תעודת זהות"
         android:inputType="text"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="316dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tvbirthdayC"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCommentsC" />
 
     <EditText
         android:id="@+id/etCFName"
         android:layout_width="355dp"
         android:layout_height="48dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:fontFamily="@font/assistantsemibold"
         android:hint="שם פרטי"
         android:inputType="text"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="172dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etCLName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etCLName"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="275dp"
         android:layout_height="94dp"
+        android:layout_marginTop="47dp"
         android:fontFamily="@font/horevclmheavywebfont"
         android:gravity="center"
         android:text="רישום-ילד"
         android:textColor="#878686"
         android:textSize="90sp"
         android:typeface="serif"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="47dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etCFName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
