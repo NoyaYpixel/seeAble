@@ -46,67 +46,83 @@
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/btnAddTM"
-        android:layout_width="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_height="27dp"
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:fontFamily="@font/assistantbold"
-        android:gravity="right"
-        android:text=" הוספת איש צוות "
-        android:textColor="#426B87"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddC"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddC" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19">
 
-    <Button
-        android:id="@+id/btnAddC"
-        android:layout_width="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
-        android:fontFamily="@font/assistantbold"
-        android:gravity="right"
-        android:text=" הוספת ילד "
-        android:textColor="#426B87"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        <Button
+            android:id="@+id/btnAddTM"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" הוספת איש צוות "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
 
-    <Button
-        android:id="@+id/btnAddSM"
-        android:layout_width="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:fontFamily="@font/assistantbold"
-        android:gravity="right"
-        android:text=" שליחת הודעת תפוצה "
-        android:textColor="#426B87"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddTM"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddTM" />
+        <Button
+            android:id="@+id/btnAddC"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" הוספת ילד "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
 
-    <Button
-        android:id="@+id/btnSDR"
-        android:layout_width="match_parent"
-        android:layout_height="26dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/white"
-        android:fontFamily="@font/assistantbold"
-        android:gravity="right"
-        android:text=" עדכון דו''ח יומי "
-        android:textColor="#426B87"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddTM"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddTM" />
+        <Button
+            android:id="@+id/btnAddSM"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" שליחת הודעת תפוצה "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
+
+        <Button
+            android:id="@+id/btnSDR"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" עדכון דו''ח יומי "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/btnEtUser"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" עריכת משתמש "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

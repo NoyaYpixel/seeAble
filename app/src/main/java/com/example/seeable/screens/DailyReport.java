@@ -3,6 +3,7 @@ package com.example.seeable.screens;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,20 +35,63 @@ public class DailyReport extends AppCompatActivity {
         RadioGroup radioGroup4 = findViewById(R.id.radioGroup4);
         RadioGroup radioGroup5 = findViewById(R.id.radioGroup5);
 
-        RadioButton radioButton4 = findViewById(R.id.radioButton4);  // כן
-        RadioButton radioButton5 = findViewById(R.id.radioButton5);  // לא
 
-        RadioButton radioButton6 = findViewById(R.id.radioButton6);  // כן
-        RadioButton radioButton7 = findViewById(R.id.radioButton7);  // לא
+        Boolean fi = IsChecked(radioGroup5, R.id.rbtnYes5, R.id.rbtnNo5);
+        if (fi == null) {
+            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        RadioButton radioButton8 = findViewById(R.id.radioButton8);  // כן
-        RadioButton radioButton9 = findViewById(R.id.radioButton9);  // לא
+        Boolean fo = IsChecked(radioGroup4, R.id.rbtnYes4, R.id.rbtnNo4);
+        if (fo == null) {
+            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        RadioButton radioButton10 = findViewById(R.id.radioButton10);  // כן
-        RadioButton radioButton11 = findViewById(R.id.radioButton11);  // לא
+        Boolean th = IsChecked(radioGroup1, R.id.rbtnYes3, R.id.rbtnNo3);
+        if (th == null) {
+            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        RadioButton radioButton14 = findViewById(R.id.radioButton14);  // כן
-        RadioButton radioButton15 = findViewById(R.id.radioButton15);  // לא
+        Boolean two = IsChecked(radioGroup2, R.id.rbtnYes2, R.id.rbtnNo2);
+        if (two == null) {
+            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        Boolean one = IsChecked(radioGroup3, R.id.rbtnYes1, R.id.rbtnNo1);
+        if (one == null) {
+            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        RadioButton rbtnYes1 = findViewById(R.id.rbtnYes1);  // כן
+        RadioButton rbtnNo1 = findViewById(R.id.rbtnNo1);  // לא
+
+        RadioButton rbtnYes2 = findViewById(R.id.rbtnYes2);  // כן
+        RadioButton rbtnNo2 = findViewById(R.id.rbtnNo2);  // לא
+
+        RadioButton rbtnYes3 = findViewById(R.id.rbtnYes3);  // כן
+        RadioButton rbtnNo3 = findViewById(R.id.rbtnNo3);  // לא
+
+        RadioButton rbtnYes4 = findViewById(R.id.rbtnYes4);  // כן
+        RadioButton rbtnNo4 = findViewById(R.id.rbtnNo4);  // לא
+
+        RadioButton rbtnYes5 = findViewById(R.id.rbtnYes5);  // כן
+        RadioButton rbtnNo5 = findViewById(R.id.rbtnNo5);  // לא
+
+    }
+
+    private Boolean IsChecked(RadioGroup radioGroup, int yesID, int noID) {
+        if (radioGroup.getCheckedRadioButtonId() == yesID) {
+            return true;
+        }
+        else if (radioGroup.getCheckedRadioButtonId() == noID) {
+            return false;
+        }
+        radioGroup.requestFocus();
+        return null;
     }
 }

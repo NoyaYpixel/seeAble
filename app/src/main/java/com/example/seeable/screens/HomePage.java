@@ -2,9 +2,12 @@ package com.example.seeable.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +17,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
 import com.example.seeable.model.User;
+import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.utils.SharedPreferencesUtil;
 
-public class HomePage extends AppCompatActivity implements View.OnClickListener {
+public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
     User user;
-    Button btnAddC, btnAddSM, btnAddTM, btnSDR ;
+    Button btnAddC, btnAddSM, btnAddTM, btnSDR, btnEtUser ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         btnAddTM.setOnClickListener((View.OnClickListener) this);
         btnSDR = findViewById(R.id.btnSDR);
         btnSDR.setOnClickListener((View.OnClickListener) this);
+        btnEtUser = findViewById(R.id.btnEtUser);
+        btnEtUser.setOnClickListener((View.OnClickListener) this);
 
         if (user.isAdmin()) {
             btnAddTM.setVisibility(View.VISIBLE);
@@ -72,5 +78,30 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             Intent go=new Intent(getApplicationContext(), SendAPublicMessage.class);
             startActivity(go);
         }
+        if(view==btnEtUser)
+        {
+            Intent go=new Intent(getApplicationContext(), EditUser.class);
+            startActivity(go);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.signOut) {
+            AuthenticationService.getInstance().signOut();
+            SharedPreferencesUtil.signOutUser(this);
+            Intent go = new Intent(this, MainActivity.class);
+            go.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(go);
+            Toast.makeText(this, "התנתקת בהצלחה", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

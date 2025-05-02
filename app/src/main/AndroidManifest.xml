@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GanBeAnan"
         tools:targetApi="31">
         <activity
+            android:name=".screens.EditUser"
+            android:exported="false" />
+        <activity
             android:name=".screens.HomePage"
             android:exported="false" />
         <activity
@@ -29,7 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".screens.AdminPage"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".screens.AddUserTeam"
             android:exported="false" />

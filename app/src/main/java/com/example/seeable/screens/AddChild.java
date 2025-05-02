@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.seeable.R;
 import com.example.seeable.services.AuthenticationService;
 
-public class AddChild extends AppCompatActivity {
+public class AddChild extends MyBaseActivity {
     EditText id, fname, lname, details;
     CalendarView birthdayC;
     Button btnAddChild;
