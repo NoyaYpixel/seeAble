@@ -31,9 +31,6 @@
             android:name=".screens.SendAPublicMessage"
             android:exported="false" />
         <activity
-            android:name=".screens.AdminPage"
-            android:exported="false" />
-        <activity
             android:name=".screens.AddUserTeam"
             android:exported="false" />
         <activity

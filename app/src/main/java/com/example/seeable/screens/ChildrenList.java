@@ -7,10 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.seeable.R;
+import com.example.seeable.adapters.ChildAdapter;
+import com.example.seeable.adapters.UsersAdapter;
+import com.example.seeable.model.Child;
+import com.example.seeable.services.DatabaseService;
 
 public class ChildrenList extends AppCompatActivity {
+
+    private static final String TAG = "ChildrenList";
+
+    DatabaseService databaseService;
+
+    RecyclerView recyclerView;
+    ChildAdapter childAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +35,18 @@ public class ChildrenList extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        databaseService = DatabaseService.getInstance();
+        recyclerView = findViewById(R.id.rv_children);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        childAdapter = new ChildAdapter(new ChildAdapter.OnChildClick() {
+            @Override
+            public void OnClick(Child child) {
+
+            }
+        });
+
+        recyclerView.setAdapter(childAdapter);
+
     }
 }

@@ -12,14 +12,20 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:fontFamily="@font/horevclmheavywebfont"
         android:gravity="center"
         android:text="רשימת ילדים"
         android:textColor="#878686"
         android:textSize="90sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_children"
+        android:layout_width="409dp"
+        android:layout_height="595dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="135dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

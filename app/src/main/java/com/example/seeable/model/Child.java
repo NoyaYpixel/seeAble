@@ -1,18 +1,19 @@
 package com.example.seeable.model;
 
 public class Child {
-    String id, fname, lname, birthDate, details, userId;
+    String id, fname, lname, notes, parentId;
+    MyDate birthday;
 
     public Child() {
     }
 
-    public Child(String id, String fname, String lname, String birthDate, String details, String userId) {
+    public Child(String id, String fname, String lname, String notes, String parentId, MyDate birthday) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
-        this.birthDate = birthDate;
-        this.details = details;
-        this.userId = userId;
+        this.notes = notes;
+        this.parentId = parentId;
+        this.birthday = birthday;
     }
 
     public String getId() {
@@ -39,28 +40,28 @@ public class Child {
         this.lname = lname;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
-    public String getDetails() {
-        return details;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
-    public String getUserId() {
-        return userId;
+    public MyDate getBirthday() {
+        return birthday;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setBirthday(MyDate birthday) {
+        this.birthday = birthday;
     }
 
     @Override
@@ -69,9 +70,11 @@ public class Child {
                 "id='" + id + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", details='" + details + '\'' +
-                ", userId='" + userId + '\'' +
+                ", notes='" + notes + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
+
+
 }

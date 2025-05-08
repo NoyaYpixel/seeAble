@@ -83,6 +83,11 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
             Intent go=new Intent(getApplicationContext(), EditUser.class);
             startActivity(go);
         }
+        if(view==btnSDR)
+        {
+            Intent go=new Intent(getApplicationContext(), DailyReport.class);
+            startActivity(go);
+        }
     }
 
     @Override

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvChildName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שם הילד"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/tvChildId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מספר ת.ז"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/tvParentId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שם ההורה/ת.ז"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/tvbirthdayC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="תאריך לידה"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="הערות"
+        tools:layout_editor_absoluteX="294dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="76dp"
+        android:layout_height="36dp"
+        android:text="דוח יומי"
+        tools:layout_editor_absoluteX="343dp"
+        tools:layout_editor_absoluteY="-7dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

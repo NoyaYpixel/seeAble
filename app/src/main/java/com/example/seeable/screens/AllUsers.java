@@ -37,9 +37,9 @@ public class AllUsers extends AppCompatActivity {
             return insets;
         });
         databaseService = DatabaseService.getInstance();
-
         recyclerView = findViewById(R.id.rv_users);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         usersAdapter = new UsersAdapter(new UsersAdapter.OnUserListener() {
             @Override
             public void onSwitch(User user, boolean isChecked) {
