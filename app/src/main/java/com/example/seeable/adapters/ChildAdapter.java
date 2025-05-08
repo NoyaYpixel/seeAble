@@ -49,6 +49,10 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
         Child child = childList.get(position);
         holder.tvChildName.setText(child.getFname() + " " + child.getLname());
         holder.tvChildNotes.setText(child.getNotes());
+        holder.tvChildId.setText(child.getId());
+        holder.tvParentId.setText(child.getParentId());
+        //holder.tvbirthdayC.setText(child.getBirthday());
+        holder.tvChildNotes.setText(child.getNotes());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +70,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
     // ViewHolder - מחזיק את ה-View עבור פריט יחיד
     protected static class ChildViewHolder extends RecyclerView.ViewHolder {
-        TextView tvChildName, tvChildNotes;
+        TextView tvChildName, tvChildNotes, tvChildId, tvParentId, tvbirthdayC;
 
         public ChildViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvChildFN = itemView.findViewById(R.id.tvChildFN);
-            tvChildLN = itemView.findViewById(R.id.tvChildLN);
+            tvChildName = itemView.findViewById(R.id.tvChildName);
             tvChildId = itemView.findViewById(R.id.tvChildId);
             tvParentId = itemView.findViewById(R.id.tvParentId);
             tvbirthdayC = itemView.findViewById(R.id.tvbirthdayC);

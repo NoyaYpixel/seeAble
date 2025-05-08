@@ -37,7 +37,7 @@
         tools:layout_editor_absoluteY="1dp" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/tvChildNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="הערות"
@@ -45,7 +45,7 @@
         tools:layout_editor_absoluteY="1dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSDR"
         android:layout_width="76dp"
         android:layout_height="36dp"
         android:text="דוח יומי"
