@@ -52,6 +52,7 @@ public class AddChild extends MyBaseActivity {
         etLname = findViewById(R.id.etCLName);
         birthdayC = findViewById(R.id.birthdayC);
         etDetails = findViewById(R.id.etCommentsC);
+        btnAddChild = findViewById(R.id.btnAddC);
 
         btnAddChild.setOnClickListener(this::onClick);
     }

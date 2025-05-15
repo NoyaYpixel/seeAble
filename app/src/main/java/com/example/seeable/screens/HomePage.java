@@ -23,7 +23,7 @@ import com.example.seeable.utils.SharedPreferencesUtil;
 public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
     User user;
-    Button btnAddC, btnAddSM, btnAddTM, btnSDR, btnEtUser ;
+    Button btnAddC, btnAddSM, btnAddTM, btnSDR, btnEtUser,btnChildrenList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +51,19 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         btnSDR.setOnClickListener((View.OnClickListener) this);
         btnEtUser = findViewById(R.id.btnEtUser);
         btnEtUser.setOnClickListener((View.OnClickListener) this);
+        btnChildrenList = findViewById(R.id.btnChildrenList);
+        btnChildrenList.setOnClickListener((View.OnClickListener) this);
 
         if (user.isAdmin()) {
             btnAddTM.setVisibility(View.VISIBLE);
             btnAddSM.setVisibility(View.VISIBLE);
             btnSDR.setVisibility(View.VISIBLE);
+            btnChildrenList.setVisibility(View.VISIBLE);
         } else {
             btnAddTM.setVisibility(View.GONE);
             btnAddSM.setVisibility(View.GONE);
             btnSDR.setVisibility(View.GONE);
+            btnChildrenList.setVisibility(View.VISIBLE);
         }
     }
     public void onClick(View view) {
@@ -86,6 +90,11 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         if(view==btnSDR)
         {
             Intent go=new Intent(getApplicationContext(), DailyReport.class);
+            startActivity(go);
+        }
+        if(view==btnChildrenList)
+        {
+            Intent go=new Intent(getApplicationContext(), ChildrenList.class);
             startActivity(go);
         }
     }
