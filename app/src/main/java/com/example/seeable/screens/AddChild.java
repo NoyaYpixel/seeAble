@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class AddChild extends MyBaseActivity {
-    EditText etId, etFname, etLname, etDetails;
+    EditText etCId, etFname, etLname, etDetails;
     CalendarView birthdayC;
     Button btnAddChild;
     AuthenticationService authenticationService;
@@ -47,11 +47,12 @@ public class AddChild extends MyBaseActivity {
     }
 
     private void Init() {
-        etId = findViewById(R.id.etCId);
+        etCId = findViewById(R.id.etCId);
         etFname = findViewById(R.id.etCFName);
         etLname = findViewById(R.id.etCLName);
         birthdayC = findViewById(R.id.birthdayC);
         etDetails = findViewById(R.id.etCommentsC);
+        btnAddChild = findViewById(R.id.btn_add_child);
 
         btnAddChild.setOnClickListener(this::onClick);
     }
@@ -88,7 +89,7 @@ public class AddChild extends MyBaseActivity {
 
     @NonNull
     private Child getChild() {
-        String id = etId.getText().toString();
+        String id = etCId.getText().toString();
         String fname = etFname.getText().toString();
         String lname = etLname.getText().toString();
 

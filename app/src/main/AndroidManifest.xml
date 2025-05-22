@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GanBeAnan"
         tools:targetApi="31">
         <activity
+            android:name=".screens.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.EditUser"
             android:exported="false" />
         <activity
@@ -43,7 +46,7 @@
             android:name=".screens.Register"
             android:exported="false" />
         <activity
-            android:name=".screens.MainActivity"
+            android:name=".screens.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,25 +2,25 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homePage"
+        android:id="@+id/menu_homePage"
         android:title="דף הבית"
         android:showAsAction="never"
         android:orderInCategory="100"
         tools:ignore="AppCompatResource" />
     <item
-        android:id="@+id/logIn"
+        android:id="@+id/menu_logIn"
         android:title="התחברות חדשה"
         android:showAsAction="never"
         android:orderInCategory="100"
         tools:ignore="AppCompatResource" />
     <item
-        android:id="@+id/signIn"
+        android:id="@+id/menu_signIn"
         android:title="הרשמה"
         android:showAsAction="never"
         android:orderInCategory="100"
         tools:ignore="AppCompatResource" />
     <item
-        android:id="@+id/signOut"
+        android:id="@+id/menu_signOut"
         android:title="התנתקות"
         android:showAsAction="never"
         android:orderInCategory="100"

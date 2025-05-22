@@ -48,11 +48,12 @@ public class MyDate implements Comparable<MyDate>, Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "MyDate{" +
-                "year=" + year +
-                ", month=" + month +
-                ", day=" + day +
-                '}';
+        return  year+"/"+month+"/"+day;
+        //"MyDate{" +
+                //"year=" + year +
+                //", month=" + month +
+                //", day=" + day +
+                //'}';
     }
 
     @Override

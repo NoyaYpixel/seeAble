@@ -99,7 +99,7 @@
             android:textSize="19sp" />
 
         <Button
-            android:id="@+id/btnSDR"
+            android:id="@+id/btnChildrenList"
             android:layout_width="match_parent"
             android:layout_height="26dp"
             android:layout_marginLeft="10dp"
@@ -108,7 +108,7 @@
             android:background="@color/white"
             android:fontFamily="@font/assistantbold"
             android:gravity="right"
-            android:text=" עדכון דו''ח יומי "
+            android:text=" הצגה של רשימת ילדים + ד''וח יומי לילד "
             android:textColor="#426B87"
             android:textSize="19sp" />
         <Button

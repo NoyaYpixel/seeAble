@@ -16,6 +16,8 @@ import com.example.seeable.adapters.UsersAdapter;
 import com.example.seeable.model.Child;
 import com.example.seeable.services.DatabaseService;
 
+import java.util.List;
+
 public class ChildrenList extends AppCompatActivity {
 
     private static final String TAG = "ChildrenList";
@@ -24,6 +26,7 @@ public class ChildrenList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ChildAdapter childAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,18 @@ public class ChildrenList extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(childAdapter);
+
+        databaseService.getChildren(new DatabaseService.DatabaseCallback<List<Child>>() {
+            @Override
+            public void onCompleted(List<Child> children) {
+                childAdapter.setChildList(children);
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
 
     }
 }
