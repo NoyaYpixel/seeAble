@@ -13,6 +13,15 @@
         android:theme="@style/Theme.GanBeAnan"
         tools:targetApi="31">
         <activity
+            android:name=".screens.ChildInfo"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ChildIrenInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ChildInfo"
+            android:exported="false" />
+        <activity
             android:name=".screens.MainActivity"
             android:exported="false" />
         <activity

@@ -23,7 +23,7 @@ import com.example.seeable.utils.SharedPreferencesUtil;
 public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
     User user;
-    Button btnAddC, btnAddSM, btnAddTM, btnChildrenList, btnEtUser ;
+    Button btnAddC, btnAddSM, btnAddTM, btnChildInfo, btnEtUser, btnChildReport ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +42,26 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
         ((TextView)findViewById(R.id.textView3)).setText("היי "+ this.user.getFname() + " " + this.user.getLname()+ "!");
         btnAddC = findViewById(R.id.btnAddC);
-        btnAddC.setOnClickListener((View.OnClickListener) this);
+        btnAddC.setOnClickListener(this);
         btnAddSM = findViewById(R.id.btnAddSM);
-        btnAddSM.setOnClickListener((View.OnClickListener) this);
+        btnAddSM.setOnClickListener(this);
         btnAddTM = findViewById(R.id.btnAddTM);
-        btnAddTM.setOnClickListener((View.OnClickListener) this);
-        btnChildrenList = findViewById(R.id.btnChildrenList);
-        btnChildrenList.setOnClickListener((View.OnClickListener) this);
+        btnAddTM.setOnClickListener(this);
+        btnChildReport = findViewById(R.id.btnChildReport);
+        btnChildReport.setOnClickListener(this);
         btnEtUser = findViewById(R.id.btnEtUser);
-        btnEtUser.setOnClickListener((View.OnClickListener) this);
+        btnEtUser.setOnClickListener(this);
+        btnChildInfo = findViewById(R.id.btnChildInfo);
+        btnChildInfo.setOnClickListener(this);
 
         if (user.isAdmin()) {
             btnAddTM.setVisibility(View.VISIBLE);
             btnAddSM.setVisibility(View.VISIBLE);
-            btnChildrenList.setVisibility(View.VISIBLE);
+            btnChildReport.setVisibility(View.VISIBLE);
         } else {
             btnAddTM.setVisibility(View.GONE);
             btnAddSM.setVisibility(View.GONE);
-            btnChildrenList.setVisibility(View.VISIBLE);
+            btnChildReport.setVisibility(View.VISIBLE);
         }
     }
     public void onClick(View view) {
@@ -83,11 +85,17 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
             Intent go=new Intent(getApplicationContext(), EditUser.class);
             startActivity(go);
         }
-        if(view==btnChildrenList)
+        if(view==btnChildReport)
         {
             Intent go=new Intent(getApplicationContext(), ChildrenList.class);
             startActivity(go);
         }
+        if(view==btnChildInfo)
+        {
+            Intent go=new Intent(getApplicationContext(), ChildInfo.class);
+            startActivity(go);
+        }
+
     }
 
     @Override
