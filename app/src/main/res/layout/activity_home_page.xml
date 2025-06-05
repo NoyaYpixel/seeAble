@@ -108,7 +108,7 @@
             android:background="@color/white"
             android:fontFamily="@font/assistantbold"
             android:gravity="right"
-            android:text=" הצגה של רשימת ילדים + ד''וח יומי לילד "
+            android:text=" ד''וח יומי לילד "
             android:textColor="#426B87"
             android:textSize="19sp" />
         <Button
