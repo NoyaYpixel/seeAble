@@ -63,4 +63,7 @@ public class EditUser extends AppCompatActivity {
         etLN.setText(user.getLname());
         etP.setText(user.getPhone());
     }
+
+
+    // TODO update user in DB by clicking a button
 }

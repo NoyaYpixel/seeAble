@@ -1,19 +1,36 @@
 package com.example.seeable.screens;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
+import com.example.seeable.model.Child;
+import com.example.seeable.model.MyDate;
+import com.example.seeable.model.Report;
+import com.example.seeable.services.DatabaseService;
+import com.example.seeable.utils.SharedPreferencesUtil;
 
-public class DailyReport extends AppCompatActivity {
+public class DailyReport extends AppCompatActivity implements View.OnClickListener {
+
+    private Child child;
+    private Button btnDailyReportUpdating;
+    private TextView tvChildName;
+
+    DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,73 +42,71 @@ public class DailyReport extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Init();
-    }
 
-    private void Init() {
-        RadioGroup radioGroup1 = findViewById(R.id.radioGroup1);
-        RadioGroup radioGroup2 = findViewById(R.id.radioGroup2);
-        RadioGroup radioGroup3 = findViewById(R.id.radioGroup3);
-        RadioGroup radioGroup4 = findViewById(R.id.radioGroup4);
-        RadioGroup radioGroup5 = findViewById(R.id.radioGroup5);
+        databaseService = DatabaseService.getInstance();
 
+        child = (Child) getIntent().getSerializableExtra("child");
 
-        Boolean fi = IsChecked(radioGroup5, R.id.rbtnYes5, R.id.rbtnNo5);
-        if (fi == null) {
-            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
+        if (child == null) {
+            finish();
             return;
         }
 
-        Boolean fo = IsChecked(radioGroup4, R.id.rbtnYes4, R.id.rbtnNo4);
-        if (fo == null) {
-            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        btnDailyReportUpdating = findViewById(R.id.btnDailyReportUpdating);
+        btnDailyReportUpdating.setOnClickListener(this);
 
-        Boolean th = IsChecked(radioGroup1, R.id.rbtnYes3, R.id.rbtnNo3);
-        if (th == null) {
-            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        tvChildName = findViewById(R.id.tvChildName);
 
-        Boolean two = IsChecked(radioGroup2, R.id.rbtnYes2, R.id.rbtnNo2);
-        if (two == null) {
-            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        tvChildName.setText(child.getFname() + " " + child.getLname());
 
-        Boolean one = IsChecked(radioGroup3, R.id.rbtnYes1, R.id.rbtnNo1);
-        if (one == null) {
-            Toast.makeText(this, "asdads", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
-        RadioButton rbtnYes1 = findViewById(R.id.rbtnYes1);  // כן
-        RadioButton rbtnNo1 = findViewById(R.id.rbtnNo1);  // לא
-
-        RadioButton rbtnYes2 = findViewById(R.id.rbtnYes2);  // כן
-        RadioButton rbtnNo2 = findViewById(R.id.rbtnNo2);  // לא
-
-        RadioButton rbtnYes3 = findViewById(R.id.rbtnYes3);  // כן
-        RadioButton rbtnNo3 = findViewById(R.id.rbtnNo3);  // לא
-
-        RadioButton rbtnYes4 = findViewById(R.id.rbtnYes4);  // כן
-        RadioButton rbtnNo4 = findViewById(R.id.rbtnNo4);  // לא
-
-        RadioButton rbtnYes5 = findViewById(R.id.rbtnYes5);  // כן
-        RadioButton rbtnNo5 = findViewById(R.id.rbtnNo5);  // לא
+        // show correctly the existing report (if exit) in this page
 
     }
 
-    private Boolean IsChecked(RadioGroup radioGroup, int yesID, int noID) {
-        if (radioGroup.getCheckedRadioButtonId() == yesID) {
-            return true;
-        }
-        else if (radioGroup.getCheckedRadioButtonId() == noID) {
-            return false;
-        }
-        radioGroup.requestFocus();
+    @Nullable
+    private Boolean isChecked(RadioGroup radioGroup, int yesID, int noID) {
+        int checkedId = radioGroup.getCheckedRadioButtonId();
+        if (checkedId == yesID) return true;
+        if (checkedId == noID) return false;
         return null;
+    }
+
+
+    private void sendDailyReport(Report report) {
+        databaseService.addDailyReport(report, new DatabaseService.DatabaseCallback<Void>() {
+            @Override
+            public void onCompleted(Void object) {
+
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == btnDailyReportUpdating) {
+            RadioGroup radioGroup1 = findViewById(R.id.radioGroup1);
+            RadioGroup radioGroup2 = findViewById(R.id.radioGroup2);
+            RadioGroup radioGroup3 = findViewById(R.id.radioGroup3);
+            RadioGroup radioGroup4 = findViewById(R.id.radioGroup4);
+            RadioGroup radioGroup5 = findViewById(R.id.radioGroup5);
+
+            Boolean isArrived =     isChecked(radioGroup1, R.id.rbtnYes1, R.id.rbtnNo1);
+            Boolean isFeelingGood = isChecked(radioGroup2, R.id.rbtnYes2, R.id.rbtnNo2);
+            Boolean isEatMorning =  isChecked(radioGroup3, R.id.rbtnYes3, R.id.rbtnNo3);
+            Boolean isDrank =       isChecked(radioGroup4, R.id.rbtnYes4, R.id.rbtnNo4);
+            Boolean isSlept =       isChecked(radioGroup5, R.id.rbtnYes5, R.id.rbtnNo5);
+
+            Report report = new Report(child.getId(), MyDate.now(), isArrived, isFeelingGood, isEatMorning, isDrank, isSlept);
+
+            Log.d("!!!!!!!!!!!!!!!", report.toString());
+
+            sendDailyReport(report);
+            return;
+        }
     }
 }

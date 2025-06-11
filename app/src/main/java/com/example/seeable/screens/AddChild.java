@@ -20,9 +20,11 @@ import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.services.DatabaseService;
 import com.example.seeable.utils.Validator;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 
 public class AddChild extends MyBaseActivity {
     EditText etCId, etFname, etLname, etDetails;
@@ -89,7 +91,7 @@ public class AddChild extends MyBaseActivity {
 
     @NonNull
     private Child getChild() {
-        String id = etCId.getText().toString();
+        String id = DatabaseService.getInstance().getNewChildId();
         String fname = etFname.getText().toString();
         String lname = etLname.getText().toString();
 
@@ -100,7 +102,8 @@ public class AddChild extends MyBaseActivity {
 
         String notes = etDetails.getText().toString();
 
-        Child child = new Child(id, fname, lname, notes, authenticationService.getCurrentUserId(), birthday);
+        Child child = new Child(id, fname, lname, notes,
+                authenticationService.getCurrentUserId(), birthday, new ArrayList<>());
         return child;
     }
 

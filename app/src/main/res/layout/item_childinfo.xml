@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="serif"
         android:text="שם פרטי"
         android:textSize="25sp"
@@ -19,26 +19,15 @@
         tools:text="@tools:sample/first_names" />
 
     <TextView
-        android:id="@+id/tvLNameC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:fontFamily="serif"
-        android:text="שם משפחה"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/tvFNameC"
-        app:layout_constraintTop_toBottomOf="@+id/tvFNameC"
-        tools:text="@tools:sample/last_names" />
-
-    <TextView
         android:id="@+id/tvCId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="ת.ז"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/tvLNameC"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLNameC"
         tools:text="@tools:sample/full_names" />
 
@@ -46,7 +35,7 @@
         android:id="@+id/tvbirthdayC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="serif"
         android:text="תאריך לידה"
         android:textSize="25sp"
@@ -58,32 +47,68 @@
         android:id="@+id/tvCommentC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="serif"
         android:text="הערות נוספות"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvbirthdayC"
         app:layout_constraintTop_toBottomOf="@+id/tvbirthdayC"
         tools:text="@tools:sample/full_names" />
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/materialDivider"
-        android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:layout_marginBottom="4dp"
-        app:dividerColor="#516D87"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tvLNameC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="serif"
+        android:text="שם משפחה"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFNameC"
+        tools:text="@tools:sample/last_names" />
+
+    <TextView
+        android:id="@+id/tvComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/osluizi"
+        android:text="הערות (אם יש) : "
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBD" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/osluizi"
+        android:text="שם משפחה : "
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/osluizi"
+        android:text="מס' ת.ז : "
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
 
     <TextView
         android:id="@+id/tvFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/osluizi"
         android:text="שם פרטי : "
@@ -92,51 +117,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/osluizi"
-        android:text="מס' ת.ז : "
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
-
-    <TextView
-        android:id="@+id/tvLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/osluizi"
-        android:text="שם משפחה : "
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
-
-    <TextView
-        android:id="@+id/tvComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="12dp"
-        android:fontFamily="@font/osluizi"
-        android:text="הערות (אם יש) : "
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBD" />
-
-    <TextView
         android:id="@+id/tvBD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="14dp"
         android:fontFamily="@font/osluizi"
         android:text="תאריך לידה : "
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvId" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/materialDivider"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        app:dividerColor="#516D87"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/img_btn_trash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/deleteicon"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="22dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

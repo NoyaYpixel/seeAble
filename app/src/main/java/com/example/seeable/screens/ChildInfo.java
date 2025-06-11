@@ -1,6 +1,8 @@
 package com.example.seeable.screens;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +16,14 @@ import com.example.seeable.R;
 import com.example.seeable.adapters.ChildAdapter;
 import com.example.seeable.adapters.ChildInfoAdapter;
 import com.example.seeable.model.Child;
+import com.example.seeable.model.Comment;
 import com.example.seeable.services.DatabaseService;
 
 import java.util.List;
 
-public class ChildInfo extends AppCompatActivity {
+public class ChildInfo extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ChildInfo";
-
+    ImageButton imageButton;
     DatabaseService databaseService;
 
     RecyclerView recyclerView;
@@ -39,7 +42,8 @@ public class ChildInfo extends AppCompatActivity {
         databaseService = DatabaseService.getInstance();
         recyclerView = findViewById(R.id.rv_childInfo);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        imageButton=findViewById(R.id.img_btn_trash);
+        imageButton.setOnClickListener(this);
         childAdapter = new ChildInfoAdapter();
         recyclerView.setAdapter(childAdapter);
 
@@ -48,11 +52,19 @@ public class ChildInfo extends AppCompatActivity {
             public void onCompleted(List<Child> children) {
                 childAdapter.setChildList(children);
             }
-
             @Override
             public void onFailed(Exception e) {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        //if (v==imageButton)
+        {
+       //     databaseService.deleteChild();
+        }
+
     }
 }

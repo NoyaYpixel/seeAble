@@ -1,19 +1,27 @@
 package com.example.seeable.model;
 
-public class Child {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Child implements Serializable {
     String id, fname, lname, notes, parentId;
     MyDate birthday;
 
+    List<Report> reports;
+
     public Child() {
+        reports = new ArrayList<>();
     }
 
-    public Child(String id, String fname, String lname, String notes, String parentId, MyDate birthday) {
+    public Child(String id, String fname, String lname, String notes, String parentId, MyDate birthday, List<Report> reports) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.notes = notes;
         this.parentId = parentId;
         this.birthday = birthday;
+        this.reports = reports;
     }
 
     public String getId() {
@@ -64,6 +72,14 @@ public class Child {
         this.birthday = birthday;
     }
 
+    public List<Report> getDailyReports() {
+        return reports;
+    }
+
+    public void setDailyReports(List<Report> reports) {
+        this.reports = reports;
+    }
+
     @Override
     public String toString() {
         return "Child{" +
@@ -75,6 +91,9 @@ public class Child {
                 ", birthday=" + birthday +
                 '}';
     }
+
+
+    // TODO get report by MyDate
 
 
 }

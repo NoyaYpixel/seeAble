@@ -11,246 +11,64 @@
     <TextView
         android:id="@+id/textView9"
         android:layout_width="329dp"
-        android:layout_height="180dp"
+        android:layout_height="181dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/horevclmheavywebfont"
         android:gravity="center"
         android:text="דו''ח יומי לילד"
         android:textColor="#878686"
         android:textSize="90sp"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView14"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="(תאריך)"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="143dp" />
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/textView9">
 
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="118dp"
-        android:layout_height="31dp"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="135dp" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="האם הילד הגיע ?"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="196dp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="האם הילד ישן ?"
-        tools:layout_editor_absoluteX="286dp"
-        tools:layout_editor_absoluteY="495dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="האם הילד אכל בוקר ?"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="348dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="האם הילד שתה ?"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="423dp" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="514dp">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="26dp">
+            android:fontFamily="@font/assistantbold"
+            android:text="(שם הילד)"
+            android:textSize="12sp" />
 
-            <RadioButton
-                android:id="@+id/rbtnYes5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
-            />
-
-            <RadioButton
-                android:id="@+id/rbtnNo5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
-            />
-        </LinearLayout>
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="366dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvChildName"
+            android:layout_width="118dp"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="26dp">
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:text="@tools:sample/full_names" />
 
-            <RadioButton
-                android:id="@+id/rbtnYes3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+    </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/rbtnNo3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
-        </LinearLayout>
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="290dp">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="26dp">
+            android:layout_marginTop="8dp"
+            android:gravity="center|right">
 
-            <RadioButton
-                android:id="@+id/rbtnYes2"
+            <TextView
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
-
-            <RadioButton
-                android:id="@+id/rbtnNo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
-        </LinearLayout>
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/etContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/assistantbold"
-        android:hint=""
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="556dp" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="הערות פתוחות"
-        tools:layout_editor_absoluteX="296dp"
-        tools:layout_editor_absoluteY="546dp" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="442dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="26dp">
-
-            <RadioButton
-                android:id="@+id/rbtnYes4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
-
-            <RadioButton
-                android:id="@+id/rbtnNo4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
-        </LinearLayout>
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="האם הילד חש בטוב?"
-        tools:layout_editor_absoluteX="258dp"
-        tools:layout_editor_absoluteY="272dp" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="215dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="26dp">
+                android:fontFamily="@font/assistantbold"
+                android:text="האם הילד הגיע ?" />
 
             <RadioButton
                 android:id="@+id/rbtnYes1"
@@ -267,20 +85,149 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
                 android:text="לא" />
-        </LinearLayout>
-    </RadioGroup>
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|right">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/assistantbold"
+                android:text="האם הילד חש בטוב?" />
+
+            <RadioButton
+                android:id="@+id/rbtnYes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="כן" />
+
+            <RadioButton
+                android:id="@+id/rbtnNo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="לא" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|right">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/assistantbold"
+                android:text="האם הילד אכל בוקר ?" />
+
+            <RadioButton
+                android:id="@+id/rbtnYes3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="כן" />
+
+            <RadioButton
+                android:id="@+id/rbtnNo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="לא" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|right">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/assistantbold"
+                android:text="האם הילד שתה ?" />
+
+            <RadioButton
+                android:id="@+id/rbtnYes4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="כן" />
+
+            <RadioButton
+                android:id="@+id/rbtnNo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="לא" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroup5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|right">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/assistantbold"
+                android:text="האם הילד ישן ?" />
+
+            <RadioButton
+                android:id="@+id/rbtnYes5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="כן" />
+
+            <RadioButton
+                android:id="@+id/rbtnNo5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/assistantsemibold"
+                android:text="לא" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
 
     <Button
-        android:id="@+id/btnUpdating"
-        android:layout_width="237dp"
+        android:id="@+id/btnDailyReportUpdating"
+        android:layout_width="252dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="32dp"
         android:background="#B1AEAE"
         android:fontFamily="@font/asakimboldwebfont"
         android:text=" עדכן דו''ח יומי "
         android:textColor="#5E5C5C"
         android:textSize="35dp"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="637dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

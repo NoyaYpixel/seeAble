@@ -1,6 +1,8 @@
 package com.example.seeable.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import com.example.seeable.adapters.ChildAdapter;
 import com.example.seeable.adapters.UsersAdapter;
 import com.example.seeable.model.Child;
 import com.example.seeable.services.DatabaseService;
+import com.example.seeable.utils.SharedPreferencesUtil;
 
 import java.util.List;
 
@@ -45,11 +48,20 @@ public class ChildrenList extends AppCompatActivity {
         childAdapter = new ChildAdapter(new ChildAdapter.OnChildClick() {
             @Override
             public void OnClick(Child child) {
-
+                Intent intent = new Intent(ChildrenList.this, DailyReport.class);
+                intent.putExtra("child", child);
+                startActivity(intent);
             }
         });
 
         recyclerView.setAdapter(childAdapter);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         databaseService.getChildren(new DatabaseService.DatabaseCallback<List<Child>>() {
             @Override

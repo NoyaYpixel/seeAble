@@ -3,6 +3,8 @@ package com.example.seeable.model;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class MyDate implements Comparable<MyDate>, Serializable {
@@ -19,6 +21,13 @@ public class MyDate implements Comparable<MyDate>, Serializable {
         this.year = year;
         this.month = month;
         this.day = day;
+    }
+
+    public static MyDate now() {
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return new MyDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     public int getYear() {

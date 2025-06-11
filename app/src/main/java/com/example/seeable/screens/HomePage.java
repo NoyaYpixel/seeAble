@@ -40,7 +40,13 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
     private void Init() {
         this.user = SharedPreferencesUtil.getUser(this);
 
-        ((TextView)findViewById(R.id.textView3)).setText("היי "+ this.user.getFname() + " " + this.user.getLname()+ "!");
+        if (user.isAdmin()){
+            ((TextView)findViewById(R.id.textView3)).setText("היי למנהל "+ this.user.getFname() + " " + this.user.getLname()+ "!");
+        }
+        else {
+            ((TextView) findViewById(R.id.textView3)).setText("היי למשתמש.ת " + this.user.getFname() + " " + this.user.getLname() + "!");
+        }
+
         btnAddC = findViewById(R.id.btnAddC);
         btnAddC.setOnClickListener(this);
         btnAddSM = findViewById(R.id.btnAddSM);

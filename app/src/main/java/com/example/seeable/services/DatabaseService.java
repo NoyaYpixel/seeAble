@@ -2,14 +2,19 @@ package com.example.seeable.services;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.seeable.model.Child;
+import com.example.seeable.model.Report;
 import com.example.seeable.model.Message;
 import com.example.seeable.model.User;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
 
 public class DatabaseService {
 
@@ -97,6 +104,90 @@ public class DatabaseService {
         return databaseReference.child(path).push().getKey();
     }
 
+    /// run a transaction on the data at a specific path </br>
+    /// good for incrementing a value or modifying an object in the database
+    /// @param path the path to run the transaction on
+    /// @param clazz the class of the object to return
+    /// @param function the function to apply to the current value of the data
+    /// @param callback the callback to call when the operation is completed
+    /// @see DatabaseReference#runTransaction(Transaction.Handler)
+    private <T> void runTransaction(@NotNull final String path, @NotNull final Class<T> clazz, @NotNull UnaryOperator<T> function, @NotNull final DatabaseCallback<T> callback) {
+        readData(path).runTransaction(new Transaction.Handler() {
+            @NonNull
+            @Override
+            public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+                T currentValue = currentData.getValue(clazz);
+                if (currentValue == null) {
+                    currentValue = function.apply(null);
+                } else {
+                    currentValue = function.apply(currentValue);
+                }
+                currentData.setValue(currentValue);
+                return Transaction.success(currentData);
+            }
+
+            @Override
+            public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
+                if (error != null) {
+                    Log.e(TAG, "Transaction failed", error.toException());
+                    callback.onFailed(error.toException());
+                    return;
+                }
+                T result = currentData != null ? currentData.getValue(clazz) : null;
+                callback.onCompleted(result);
+            }
+        });
+
+    }
+
+    public void getClassRef(String uid, DatabaseCallback<String> callback) {
+        databaseReference.child("classes").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot dataSnapshot = task.getResult();
+                if (dataSnapshot.exists()) {
+                    Map<String, String> map = (Map<String, String>) dataSnapshot.getValue();
+                    if (map == null) {
+                        if (callback != null) {
+                            callback.onFailed(new Exception("classes not exist"));
+                        }
+                        return;
+                    }
+                    Log.d(TAG, map.toString());
+                    Log.d(TAG, uid);
+                    if (!map.containsKey(uid)) {
+                        if (callback != null) {
+                            callback.onFailed(new Exception("classes for uid not exist"));
+                        }
+                        return;
+                    }
+                    String className = map.get(uid);
+                    if (callback != null) {
+                        callback.onCompleted(className);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFailed(new Exception("Class not exist"));
+                    }
+                }
+            } else {
+                if (callback != null) {
+                    callback.onFailed(task.getException());
+                }
+            }
+        });
+    }
+    private void deleteData(@NotNull final String path, @Nullable final DatabaseCallback<Void> callback) {
+        readData(path).removeValue((error, ref) -> {
+            if (error != null) {
+                if (callback == null) return;
+                callback.onFailed(error.toException());
+            } else {
+                if (callback == null) return;
+                callback.onCompleted(null);
+            }
+        });
+    }
+
     private DatabaseReference readData(String path) {
         return databaseReference.child(path);
     }
@@ -164,39 +255,29 @@ public class DatabaseService {
         });
     }
 
-    public void getClassRef(String uid, DatabaseCallback<String> callback) {
-        databaseReference.child("classes").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DataSnapshot dataSnapshot = task.getResult();
-                if (dataSnapshot.exists()) {
-                    Map<String, String> map = (Map<String, String>) dataSnapshot.getValue();
-                    if (map == null) {
-                        if (callback != null) {
-                            callback.onFailed(new Exception("classes not exist"));
-                        }
-                        return;
-                    }
-                    Log.d(TAG, map.toString());
-                    Log.d(TAG, uid);
-                    if (!map.containsKey(uid)) {
-                        if (callback != null) {
-                            callback.onFailed(new Exception("classes for uid not exist"));
-                        }
-                        return;
-                    }
-                    String className = map.get(uid);
-                    if (callback != null) {
-                        callback.onCompleted(className);
-                    }
-                } else {
-                    if (callback != null) {
-                        callback.onFailed(new Exception("Class not exist"));
-                    }
-                }
-            } else {
-                if (callback != null) {
-                    callback.onFailed(task.getException());
-                }
+    public void deleteChild(@NotNull final String childId, @Nullable final DatabaseCallback<Void> callback) {
+        deleteData("child/" + childId, callback);
+    }
+
+    public void addDailyReport(@NotNull final Report report, @Nullable final DatabaseCallback<Void> callback) {
+        runTransaction("child/" + report.getChildId(), Child.class, new UnaryOperator<Child>() {
+            @Override
+            public Child apply(Child child) {
+                List<Report> reports = child.getDailyReports();
+                reports.remove(report);
+                reports.add(report);
+                child.setDailyReports(reports);
+                return child;
+            }
+        }, new DatabaseCallback<Child>() {
+            @Override
+            public void onCompleted(Child object) {
+                callback.onCompleted(null);
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+                callback.onFailed(e);
             }
         });
     }

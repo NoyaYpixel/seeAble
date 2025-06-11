@@ -1,7 +1,10 @@
 package com.example.seeable.screens;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.seeable.R;
 
 public class Splash extends AppCompatActivity {
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,7 @@ public class Splash extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        progressBar= findViewById(R.id.progressBar);
 
         Thread mSplashThread = new Thread() {
             public void run() {
