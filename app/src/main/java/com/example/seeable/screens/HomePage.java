@@ -20,6 +20,8 @@ import com.example.seeable.model.User;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.utils.SharedPreferencesUtil;
 
+import java.util.Objects;
+
 public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
     User user;
@@ -40,48 +42,52 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
     private void Init() {
         this.user = SharedPreferencesUtil.getUser(this);
 
-        if (user.isAdmin()){
+        if (Objects.equals(user.getPosition(), User.Position.Team.getType())){
             ((TextView)findViewById(R.id.textView3)).setText("היי למנהל "+ this.user.getFname() + " " + this.user.getLname()+ "!");
         }
         else {
             ((TextView) findViewById(R.id.textView3)).setText("היי למשתמש.ת " + this.user.getFname() + " " + this.user.getLname() + "!");
         }
 
-        btnShowR=findViewById(R.id.btnShowR);
-        btnShowR.setOnClickListener(this);
         btnAddC = findViewById(R.id.btnAddC);
         btnAddC.setOnClickListener(this);
         btnAddSM = findViewById(R.id.btnAddSM);
         btnAddSM.setOnClickListener(this);
         btnAddTM = findViewById(R.id.btnAddTM);
         btnAddTM.setOnClickListener(this);
-        btnEtUser = findViewById(R.id.btnEtUser);
-        btnEtUser.setOnClickListener(this);
         btnChildReport = findViewById(R.id.btnChildReport);
         btnChildReport.setOnClickListener(this);
         btnChildrenList = findViewById(R.id.btnChildrenList);
         btnChildrenList.setOnClickListener(this);
+        btnShowR = findViewById(R.id.btnShowR);
+        btnShowR.setOnClickListener(this);
+        btnEtUser = findViewById(R.id.btnEtUser);
+        btnEtUser.setOnClickListener(this);
 
-        if (user.isAdmin()) {
+        if (Objects.equals(user.getPosition(), User.Position.Manager.getType())) {
             btnAddTM.setVisibility(View.VISIBLE);
             btnAddSM.setVisibility(View.VISIBLE);
             btnChildReport.setVisibility(View.VISIBLE);
             btnAddC.setVisibility(View.GONE);
             btnChildrenList.setVisibility(View.VISIBLE);
-        } else {
-            btnAddTM.setVisibility(View.VISIBLE);
+            btnShowR.setVisibility(View.GONE);
+        } else if (Objects.equals(user.getPosition(), User.Position.Team.getType())) {
+            btnAddTM.setVisibility(View.GONE);
+            btnAddSM.setVisibility(View.VISIBLE);
+            btnChildReport.setVisibility(View.VISIBLE);
+            btnAddC.setVisibility(View.GONE);
+            btnChildrenList.setVisibility(View.VISIBLE);
+            btnShowR.setVisibility(View.GONE);
+        } else if (Objects.equals(user.getPosition(), User.Position.Normal.getType())) {
+            btnAddTM.setVisibility(View.GONE);
             btnAddSM.setVisibility(View.GONE);
             btnChildReport.setVisibility(View.GONE);
             btnAddC.setVisibility(View.VISIBLE);
             btnChildrenList.setVisibility(View.GONE);
+            btnShowR.setVisibility(View.VISIBLE);
         }
     }
     public void onClick(View view) {
-        if(view==btnShowR)
-        {
-            Intent go=new Intent(getApplicationContext(), AddChild.class);
-            startActivity(go);
-        }
         if(view==btnAddC)
         {
             Intent go=new Intent(getApplicationContext(), AddChild.class);
@@ -110,6 +116,11 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         if(view==btnChildrenList)
         {
             Intent go=new Intent(getApplicationContext(), ChildInfo.class);
+            startActivity(go);
+        }
+        if(view==btnShowR)
+        {
+            Intent go=new Intent(getApplicationContext(), ShowReport.class);
             startActivity(go);
         }
 

@@ -5,93 +5,143 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#99999B"
     tools:context=".screens.ShowReport">
 
     <TextView
         android:id="@+id/tvBoolean2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/assistantbold"
         android:text="TextView"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-    <TextView
-        android:id="@+id/tvIsArrived"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <TextView
-        android:id="@+id/tvBoolean1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <TextView
-        android:id="@+id/tvIsGood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-    <TextView
-        android:id="@+id/tvBoolean3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="273dp" />
-
-    <TextView
-        android:id="@+id/tvIsAte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="273dp" />
-
-    <TextView
-        android:id="@+id/tvBoolean4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="338dp" />
-
-    <TextView
-        android:id="@+id/tvIsDrank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="338dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsGood"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="253dp" />
 
     <TextView
         android:id="@+id/tvBoolean5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/assistantbold"
         android:text="TextView"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="405dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsSlept"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="403dp" />
+
+    <TextView
+        android:id="@+id/tvBoolean3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/assistantbold"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsAte"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="302dp" />
+
+    <TextView
+        android:id="@+id/tvIsGood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="האם הילד חש בטוב ?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <TextView
+        android:id="@+id/tvBoolean4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/assistantbold"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsDrank"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="351dp" />
+
+    <TextView
+        android:id="@+id/tvIsAte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="האם הילד אכל בוקר ?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="302dp" />
+
+    <TextView
+        android:id="@+id/tvIsDrank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="האם הילד שתה ?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="351dp" />
 
     <TextView
         android:id="@+id/tvIsSlept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="האם הילד ישן ?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="403dp" />
+
+    <TextView
+        android:id="@+id/tvIsArrived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="האם הילד הגיע ?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="203dp" />
+
+    <TextView
+        android:id="@+id/tvBoolean1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/assistantbold"
         android:text="TextView"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="405dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvIsArrived"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="203dp" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="28dp" />
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/horevclmheavywebfont"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="דו''ח יומי אחרון שעודכן"
+        android:textColor="#D7D7D7"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
 </androidx.constraintlayout.widget.ConstraintLayout>

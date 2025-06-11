@@ -118,5 +118,13 @@
             app:layout_constraintTop_toTopOf="@+id/textView22" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/btnUpdateUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ערוך"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="462dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

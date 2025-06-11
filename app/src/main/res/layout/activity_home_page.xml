@@ -138,19 +138,6 @@
             android:textColor="#426B87"
             android:textSize="19sp" />
         <Button
-            android:id="@+id/btnEtUser"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white"
-            android:fontFamily="@font/assistantbold"
-            android:gravity="right"
-            android:text=" עריכת משתמש "
-            android:textColor="#426B87"
-            android:textSize="19sp" />
-        <Button
             android:id="@+id/btnShowR"
             android:layout_width="match_parent"
             android:layout_height="26dp"
@@ -161,6 +148,19 @@
             android:fontFamily="@font/assistantbold"
             android:gravity="right"
             android:text=" הצג דו''ח יומי מעודכן "
+            android:textColor="#426B87"
+            android:textSize="19sp" />
+        <Button
+            android:id="@+id/btnEtUser"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            android:fontFamily="@font/assistantbold"
+            android:gravity="right"
+            android:text=" עריכת משתמש "
             android:textColor="#426B87"
             android:textSize="19sp" />
 

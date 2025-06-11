@@ -187,6 +187,13 @@ public class DatabaseService {
             }
         });
     }
+    public void updateUser(User user, DatabaseCallback<Void> callback) {
+        // לדוגמא, אם משתמשים ב-Firebase Realtime Database:
+        String userId = user.getId();
+        databaseReference.child("users").child(userId).setValue(user)
+                .addOnSuccessListener(aVoid -> callback.onCompleted(null))
+                .addOnFailureListener(e -> callback.onFailed(e));
+    }
 
     private DatabaseReference readData(String path) {
         return databaseReference.child(path);

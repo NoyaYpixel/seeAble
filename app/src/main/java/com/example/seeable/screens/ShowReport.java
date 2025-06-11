@@ -1,5 +1,9 @@
 package com.example.seeable.screens;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -10,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.seeable.R;
+import com.example.seeable.model.Report;
 import com.example.seeable.model.User;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.utils.SharedPreferencesUtil;
@@ -28,9 +33,21 @@ public class ShowReport extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Init();
-    }
+        byte[] byteArray = getIntent().getByteArrayExtra("report_image");
 
+        if (byteArray != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            ImageView imageView = findViewById(R.id.imageViewReport);
+            imageView.setImageBitmap(bitmap);
+        }
+        Init();
+        Report report = (Report) getIntent().getSerializableExtra("Report");
+        tvBoolean1.setText(getStatus(report.getArrived()));
+        tvBoolean2.setText(getStatus(report.getFeelingGood()));
+        tvBoolean3.setText(getStatus(report.getEatMorning()));
+        tvBoolean4.setText(getStatus(report.getDrank()));
+        tvBoolean5.setText(getStatus(report.getSlept()));
+    }
     private void Init() {
         tvIsArrived=findViewById(R.id.tvIsArrived);
         tvIsGood=findViewById(R.id.tvIsGood);
@@ -42,5 +59,16 @@ public class ShowReport extends AppCompatActivity {
         tvBoolean3=findViewById(R.id.tvBoolean3);
         tvBoolean4=findViewById(R.id.tvBoolean4);
         tvBoolean5=findViewById(R.id.tvBoolean5);
+    }
+    private String getStatus(Boolean flag){
+        if (flag==true)
+        {
+            return "אושר";
+        }
+        if (flag==false)
+        {
+            return "לא אושר";
+        }
+        return "לא אומת";
     }
 }

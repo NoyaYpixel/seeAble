@@ -68,6 +68,8 @@ public class SharedPreferencesUtil {
         editor.putString("phone", user.getPhone());
         editor.putString("email", user.getEmail());
         editor.putString("password", user.getPassword());
+        editor.putString("position", user.getPosition());
+        editor.putBoolean("isAdmin", user.isAdmin());
         editor.apply();
     }
 
@@ -83,9 +85,9 @@ public class SharedPreferencesUtil {
         String phone = sharedPreferences.getString("phone","");
         String email = sharedPreferences.getString("email", "");
         String password = sharedPreferences.getString("password", "");
-        String position = sharedPreferences.getString("position", String.valueOf(false));
-        String isAdmin = sharedPreferences.getString("isAdmin", null);
-        return new User(id,fname,lname,phone,email,password,null,false);
+        String position = sharedPreferences.getString("position", User.Position.Normal.getType());
+        boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false);
+        return new User(id,fname,lname,phone,email,password,position,isAdmin);
     }
 
     public static void signOutUser(Context context) {

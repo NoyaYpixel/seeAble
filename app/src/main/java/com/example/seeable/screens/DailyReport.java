@@ -1,5 +1,10 @@
 package com.example.seeable.screens;
 
+import android.graphics.Bitmap;
+import java.io.ByteArrayOutputStream;
+import android.content.Intent;
+
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -106,7 +111,28 @@ public class DailyReport extends AppCompatActivity implements View.OnClickListen
             Log.d("!!!!!!!!!!!!!!!", report.toString());
 
             sendDailyReport(report);
+            Bitmap bitmap = captureScreenAsBitmap();
+            byte[] byteArray = bitmapToByteArray(bitmap);
+
+            Intent intent = new Intent(DailyReport.this, ShowReport.class);
+            intent.putExtra("report_image", byteArray);
+            intent.putExtra("Report", report);
+            startActivity(intent);
             return;
         }
+    }
+    private Bitmap captureScreenAsBitmap() {
+        View rootView = getWindow().getDecorView().getRootView();
+        rootView.setDrawingCacheEnabled(true);
+        rootView.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(rootView.getDrawingCache());
+        rootView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    private byte[] bitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
     }
 }
