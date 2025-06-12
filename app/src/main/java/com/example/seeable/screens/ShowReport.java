@@ -63,16 +63,16 @@ public class ShowReport extends MyBaseActivity {
     }
     private String getStatus(Boolean flag){
         if (flag == null) {
-            return "לא אומת";
+            return "עדיין לא סומן";
         }
         else if (flag==true)
         {
-            return "אושר";
+            return "כן";
         }
         else if (flag==false)
         {
-            return "לא אושר";
+            return "לא";
         }
-        return "לא אומת";
+        return "עדיין לא סומן";
     }
 }

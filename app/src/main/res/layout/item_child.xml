@@ -27,6 +27,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="serif"
         android:text="ת.ז"
+        android:visibility="gone"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvChildName"
         app:layout_constraintStart_toEndOf="@+id/tvChildName"

@@ -14,7 +14,7 @@
         android:layout_marginBottom="8dp"
         android:text="TextView"
         android:textSize="30sp"
-        android:fontFamily="@font/assistantlight"
+        android:fontFamily="@font/assistantbold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

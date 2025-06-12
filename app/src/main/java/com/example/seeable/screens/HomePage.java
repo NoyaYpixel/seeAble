@@ -39,7 +39,10 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         });
         Init();
     }
-    private void Init() {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         this.user = SharedPreferencesUtil.getUser(this);
 
         if (Objects.equals(user.getPosition(), User.Position.Manager.getType())){
@@ -51,19 +54,6 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         else {
             ((TextView) findViewById(R.id.textView3)).setText("היי להורה " + this.user.getFname() + " " + this.user.getLname() + "!");
         }
-
-        btnAddC = findViewById(R.id.btnAddC);
-        btnAddC.setOnClickListener(this);
-        btnAddTM = findViewById(R.id.btnAddTM);
-        btnAddTM.setOnClickListener(this);
-        btnChildReport = findViewById(R.id.btnChildReport);
-        btnChildReport.setOnClickListener(this);
-        btnChildrenList = findViewById(R.id.btnChildrenList);
-        btnChildrenList.setOnClickListener(this);
-        btnShowR = findViewById(R.id.btnShowR);
-        btnShowR.setOnClickListener(this);
-        btnEtUser = findViewById(R.id.btnEtUser);
-        btnEtUser.setOnClickListener(this);
 
         if (Objects.equals(user.getPosition(), User.Position.Manager.getType())) {
             btnAddTM.setVisibility(View.VISIBLE);
@@ -84,6 +74,25 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
             btnChildrenList.setVisibility(View.GONE);
             btnShowR.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void Init() {
+
+
+        btnAddC = findViewById(R.id.btnAddC);
+        btnAddC.setOnClickListener(this);
+        btnAddTM = findViewById(R.id.btnAddTM);
+        btnAddTM.setOnClickListener(this);
+        btnChildReport = findViewById(R.id.btnChildReport);
+        btnChildReport.setOnClickListener(this);
+        btnChildrenList = findViewById(R.id.btnChildrenList);
+        btnChildrenList.setOnClickListener(this);
+        btnShowR = findViewById(R.id.btnShowR);
+        btnShowR.setOnClickListener(this);
+        btnEtUser = findViewById(R.id.btnEtUser);
+        btnEtUser.setOnClickListener(this);
+
+
     }
     public void onClick(View view) {
         if(view==btnAddC)
