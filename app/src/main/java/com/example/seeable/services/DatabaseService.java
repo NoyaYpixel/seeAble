@@ -270,6 +270,9 @@ public class DatabaseService {
         runTransaction("child/" + report.getChildId(), Child.class, new UnaryOperator<Child>() {
             @Override
             public Child apply(Child child) {
+                if (child == null) {
+                    return null;
+                }
                 List<Report> reports = child.getDailyReports();
                 reports.remove(report);
                 reports.add(report);

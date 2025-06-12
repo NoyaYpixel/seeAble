@@ -4,16 +4,12 @@ import android.graphics.Bitmap;
 import java.io.ByteArrayOutputStream;
 import android.content.Intent;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
@@ -27,7 +23,6 @@ import com.example.seeable.model.Child;
 import com.example.seeable.model.MyDate;
 import com.example.seeable.model.Report;
 import com.example.seeable.services.DatabaseService;
-import com.example.seeable.utils.SharedPreferencesUtil;
 
 public class DailyReport extends AppCompatActivity implements View.OnClickListener {
 
@@ -111,11 +106,11 @@ public class DailyReport extends AppCompatActivity implements View.OnClickListen
             Log.d("!!!!!!!!!!!!!!!", report.toString());
 
             sendDailyReport(report);
-            Bitmap bitmap = captureScreenAsBitmap();
-            byte[] byteArray = bitmapToByteArray(bitmap);
+//            Bitmap bitmap = captureScreenAsBitmap();
+//            byte[] byteArray = bitmapToByteArray(bitmap);
 
             Intent intent = new Intent(DailyReport.this, ShowReport.class);
-            intent.putExtra("report_image", byteArray);
+//            intent.putExtra("report_image", byteArray);
             intent.putExtra("Report", report);
             startActivity(intent);
             return;

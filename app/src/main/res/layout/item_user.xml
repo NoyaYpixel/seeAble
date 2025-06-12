@@ -10,45 +10,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:fontFamily="serif"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/first_names"
-        android:fontFamily="serif"/>
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/user_lname_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="serif"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/user_fname_text_view"
-        app:layout_constraintTop_toTopOf="@+id/user_fname_text_view"
-        tools:text="@tools:sample/last_names"
-        android:fontFamily="serif"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/last_names" />
+
 
     <Switch
         android:id="@+id/switch_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="3dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_btn_trash"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/img_btn_trash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="@+id/tableLayout"
+        app:srcCompat="@drawable/deleteicon" />
+
     <TableLayout
-        android:layout_width="412dp"
-        android:layout_height="42dp"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -66,4 +76,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

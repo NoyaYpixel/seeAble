@@ -12,37 +12,40 @@
         android:id="@+id/tvBoolean2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="253dp"
         android:fontFamily="@font/assistantbold"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tvIsGood"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="253dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvBoolean5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/assistantbold"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tvIsSlept"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="403dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBoolean4" />
 
     <TextView
         android:id="@+id/tvBoolean3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/assistantbold"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tvIsAte"
         app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBoolean2" />
 
     <TextView
         android:id="@+id/tvIsGood"
@@ -52,76 +55,83 @@
         android:fontFamily="@font/assistantbold"
         android:text="האם הילד חש בטוב ?"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBoolean2"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="253dp" />
+        app:layout_constraintTop_toTopOf="@+id/tvBoolean2" />
 
     <TextView
         android:id="@+id/tvBoolean4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/assistantbold"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tvIsDrank"
         app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="351dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBoolean3" />
 
     <TextView
         android:id="@+id/tvIsAte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/assistantbold"
         android:text="האם הילד אכל בוקר ?"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIsGood" />
 
     <TextView
         android:id="@+id/tvIsDrank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/assistantbold"
         android:text="האם הילד שתה ?"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="351dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIsAte" />
 
     <TextView
         android:id="@+id/tvIsSlept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/assistantbold"
         android:text="האם הילד ישן ?"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="403dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIsDrank" />
 
     <TextView
         android:id="@+id/tvIsArrived"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="23dp"
         android:fontFamily="@font/assistantbold"
         android:text="האם הילד הגיע ?"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="203dp" />
+        app:layout_constraintBottom_toTopOf="@+id/tvIsGood"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tvBoolean1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
         android:fontFamily="@font/assistantbold"
         android:text="TextView"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBoolean2"
         app:layout_constraintEnd_toStartOf="@+id/tvIsArrived"
         app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="203dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView30"
@@ -140,8 +150,12 @@
 
     <ImageView
         android:id="@+id/imageViewReport"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

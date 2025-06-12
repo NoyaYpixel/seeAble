@@ -4,6 +4,9 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
@@ -15,8 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.seeable.R;
 
 public class Splash extends AppCompatActivity {
-    ProgressBar progressBar;
-
+    private ImageView myImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +29,15 @@ public class Splash extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        progressBar= findViewById(R.id.progressBar);
-
+        myImageView = findViewById(R.id.imageView);
         Thread mSplashThread = new Thread() {
             public void run() {
                 try {
                     synchronized (this) {
-                        wait(3000);
-                    }
+
+                    Animation myFadeInAnimation = AnimationUtils.loadAnimation(Splash.this, R.anim.tween);
+                    myImageView.startAnimation(myFadeInAnimation);
+                    wait(3000);}
                 } catch (InterruptedException ignored) {
                 } finally {
                     Intent intent = new Intent(Splash.this, MainActivity.class);

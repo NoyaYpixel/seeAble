@@ -1,6 +1,11 @@
 package com.example.seeable.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,14 +20,20 @@ import com.example.seeable.R;
 import com.example.seeable.model.User;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.services.DatabaseService;
+import com.example.seeable.utils.SharedPreferencesUtil;
+import com.example.seeable.utils.Validator;
+import com.google.android.material.snackbar.Snackbar;
 
-public class EditUser extends AppCompatActivity {
+public class EditUser extends AppCompatActivity implements View.OnClickListener {
 
-    EditText etFN, etLN, etP;
-    DatabaseService databaseService;
-    String userID;
-    User user;
+    private static final String TAG = "UserProfileActivity";
+
+    EditText etEditFname, etEditLname, etEditPhone;
     Button btnUpdateUser;
+    User selectedUser;
+    private DatabaseService databaseService;
+    String selectedUid;
+    boolean isCurrentUser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +45,27 @@ public class EditUser extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Init();
 
         databaseService = DatabaseService.getInstance();
-        Init();
-        userID = AuthenticationService.getInstance().getCurrentUserId();
 
-        databaseService.getUser(userID, new DatabaseService.DatabaseCallback<User>() {
+        selectedUid = getIntent().getStringExtra("USER_UID");
+        User currentUser = SharedPreferencesUtil.getUser(this);
+        if (selectedUid == null) {
+            selectedUid = currentUser.getId();
+        }
+        isCurrentUser = selectedUid.equals(currentUser.getId());
+        if (!isCurrentUser && !currentUser.isAdmin()) {
+            // If the user is not an admin and the selected user is not the current user
+            // then finish the activity
+            Toast.makeText(this, "You are not authorized to view this profile", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        DatabaseService.getInstance().getUser(AuthenticationService.getInstance().getCurrentUserId(), new DatabaseService.DatabaseCallback<User>() {
             @Override
             public void onCompleted(User user) {
-                setView(user);
+                updateView(user);
             }
 
             @Override
@@ -50,53 +73,98 @@ public class EditUser extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void updateView(User user) {
+        this.selectedUser = user;
+        etEditFname.setText(user.getFname());
+        etEditLname.setText(user.getLname());
+        etEditPhone.setText(user.getPhone());
     }
 
     private void Init() {
-        etFN = findViewById(R.id.etFN);
-        etLN = findViewById(R.id.etLN);
-        etP = findViewById(R.id.etP);
-
-        btnUpdateUser = findViewById(R.id.btnUpdateUser);
-        btnUpdateUser.setOnClickListener(v -> updateUser());
+        etEditFname= findViewById(R.id.etFN);
+        etEditLname= findViewById(R.id.etLN);
+        etEditPhone= findViewById(R.id.etP);
+        btnUpdateUser= findViewById(R.id.btnUpdateUser);
+        btnUpdateUser.setOnClickListener(this);
     }
 
-    private void setView(User user) {
-        this.user = user;
 
-        etFN.setText(user.getFname());
-        etLN.setText(user.getLname());
-        etP.setText(user.getPhone());
+    @Override
+    public void onClick(View v) {
+        if (v == btnUpdateUser) {
+            updateUser();
+            Intent go = new Intent(this, HomePage.class);
+            startActivity(go);
+        }
     }
+
+
 
     private void updateUser() {
-        // קריאת הערכים מהשדות
-        String newFirstName = etFN.getText().toString().trim();
-        String newLastName = etLN.getText().toString().trim();
-        String newPhone = etP.getText().toString().trim();
+        if (selectedUser == null) {
+            Log.e(TAG, "User not found");
+            Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Get the updated user data from the EditText fields
+        String firstName = etEditFname.getText().toString();
+        String lastName = etEditLname.getText().toString();
+        String phone = etEditPhone.getText().toString();
 
-        // עדכון האובייקט
-        user.setFname(newFirstName);
-        user.setLname(newLastName);
-        user.setPhone(newPhone);
+        if (!isValid(firstName, lastName, phone)) {
+            Log.e(TAG, "Invalid input");
+            return;
+        }
 
-        // קריאה לשירות לעדכון במסד הנתונים
-        databaseService.updateUser(user, new DatabaseService.DatabaseCallback<Void>() {
+        // Update the user object
+        selectedUser.setFname(firstName);
+        selectedUser.setLname(lastName);
+        selectedUser.setPhone(phone);
+        // Update the user data in the authentication
+        Log.d(TAG, "Updating user profile");
+        databaseService.createNewUser(selectedUser, new DatabaseService.DatabaseCallback<Object>() {
             @Override
-            public void onCompleted(Void unused) {
-                // הצלחה
-                Toast.makeText(EditUser.this, "הפרטים עודכנו בהצלחה!", Toast.LENGTH_SHORT).show();
+            public void onCompleted(Object v) {
+                Log.d(TAG, "Profile updated successfully");
+                // Save the updated user data to shared preferences
+                if (isCurrentUser) {
+                    SharedPreferencesUtil.saveUser(getApplicationContext(), selectedUser);
+                }
+                Snackbar.make(EditUser.this, findViewById(android.R.id.content), "Profile updated successfully", Snackbar.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailed(Exception e) {
-                // כישלון בעדכון
-                Toast.makeText(EditUser.this, "שגיאה בעדכון הפרטים: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Error updating profile", e);
+                Toast.makeText(EditUser.this, "Failed to update profile " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        });
+    }
+
+    private boolean isValid(String firstName, String lastName, String phone) {
+        if (!Validator.isNameValid(firstName)) {
+            etEditFname.setError("First name is required");
+            etEditFname.requestFocus();
+            return false;
+        }
+        if (!Validator.isNameValid(lastName)) {
+            etEditLname.setError("Last name is required");
+            etEditLname.requestFocus();
+            return false;
+        }
+        if (!Validator.isPhoneValid(phone)) {
+            etEditPhone.setError("Phone number is required");
+            etEditPhone.requestFocus();
+            return false;
+        }
+        return true;
+    }
 
 
-            // TODO update user in DB by clicking a button
-        });  // <-- סוגר קריאה ל updateUser עם callback}
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 }

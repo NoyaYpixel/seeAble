@@ -83,33 +83,6 @@
             android:text=" הוספת ילד "
             android:textColor="#426B87"
             android:textSize="19sp" />
-        <Button
-            android:id="@+id/btnDRHistory"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="#FFFFFF"
-            android:fontFamily="@font/assistantbold"
-            android:gravity="right"
-            android:text=" היסטוריית דוחות "
-            android:textColor="#426B87"
-            android:textSize="19sp" />
-
-        <Button
-            android:id="@+id/btnAddSM"
-            android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white"
-            android:fontFamily="@font/assistantbold"
-            android:gravity="right"
-            android:text=" שליחת הודעת תפוצה "
-            android:textColor="#426B87"
-            android:textSize="19sp" />
 
         <Button
             android:id="@+id/btnChildReport"

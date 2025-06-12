@@ -25,7 +25,7 @@ import java.util.Objects;
 public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
     User user;
-    Button btnAddC, btnAddSM, btnAddTM, btnEtUser, btnChildReport, btnChildrenList,btnShowR ;
+    Button btnAddC, btnAddTM, btnEtUser, btnChildReport, btnChildrenList,btnShowR ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,11 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
     private void Init() {
         this.user = SharedPreferencesUtil.getUser(this);
 
-        if (Objects.equals(user.getPosition(), User.Position.Team.getType())){
-            ((TextView)findViewById(R.id.textView3)).setText("היי למנהל "+ this.user.getFname() + " " + this.user.getLname()+ "!");
+        if (Objects.equals(user.getPosition(), User.Position.Manager.getType())){
+            ((TextView)findViewById(R.id.textView3)).setText("היי למנהל.ת "+ this.user.getFname() + " " + this.user.getLname()+ "!");
+        }
+        else if (Objects.equals(user.getPosition(), User.Position.Team.getType())) {
+            ((TextView)findViewById(R.id.textView3)).setText("היי לאיש צוות "+ this.user.getFname() + " " + this.user.getLname()+ "!");
         }
         else {
             ((TextView) findViewById(R.id.textView3)).setText("היי למשתמש.ת " + this.user.getFname() + " " + this.user.getLname() + "!");
@@ -51,8 +54,6 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
         btnAddC = findViewById(R.id.btnAddC);
         btnAddC.setOnClickListener(this);
-        btnAddSM = findViewById(R.id.btnAddSM);
-        btnAddSM.setOnClickListener(this);
         btnAddTM = findViewById(R.id.btnAddTM);
         btnAddTM.setOnClickListener(this);
         btnChildReport = findViewById(R.id.btnChildReport);
@@ -66,21 +67,18 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
 
         if (Objects.equals(user.getPosition(), User.Position.Manager.getType())) {
             btnAddTM.setVisibility(View.VISIBLE);
-            btnAddSM.setVisibility(View.VISIBLE);
             btnChildReport.setVisibility(View.VISIBLE);
             btnAddC.setVisibility(View.GONE);
             btnChildrenList.setVisibility(View.VISIBLE);
             btnShowR.setVisibility(View.GONE);
         } else if (Objects.equals(user.getPosition(), User.Position.Team.getType())) {
             btnAddTM.setVisibility(View.GONE);
-            btnAddSM.setVisibility(View.VISIBLE);
             btnChildReport.setVisibility(View.VISIBLE);
             btnAddC.setVisibility(View.GONE);
             btnChildrenList.setVisibility(View.VISIBLE);
             btnShowR.setVisibility(View.GONE);
         } else if (Objects.equals(user.getPosition(), User.Position.Normal.getType())) {
             btnAddTM.setVisibility(View.GONE);
-            btnAddSM.setVisibility(View.GONE);
             btnChildReport.setVisibility(View.GONE);
             btnAddC.setVisibility(View.VISIBLE);
             btnChildrenList.setVisibility(View.GONE);
@@ -96,11 +94,6 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         if(view==btnAddTM)
         {
             Intent go=new Intent(getApplicationContext(), AllUsers.class);
-            startActivity(go);
-        }
-        if(view==btnAddSM)
-        {
-            Intent go=new Intent(getApplicationContext(), SendAPublicMessage.class);
             startActivity(go);
         }
         if(view==btnEtUser)

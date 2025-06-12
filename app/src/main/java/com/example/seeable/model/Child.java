@@ -73,6 +73,9 @@ public class Child implements Serializable {
     }
 
     public List<Report> getDailyReports() {
+        if (reports == null) {
+            reports = new ArrayList<>();
+        }
         return reports;
     }
 

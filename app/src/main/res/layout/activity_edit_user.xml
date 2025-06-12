@@ -23,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="392dp"
         android:layout_height="193dp"
         android:layout_marginStart="1dp"
@@ -94,9 +95,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="serif"
             android:inputType="text"
             android:text=""
-            android:fontFamily="serif"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView23"
             app:layout_constraintEnd_toEndOf="@+id/etLN"
@@ -108,9 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="serif"
             android:inputType="text"
             android:text=""
-            android:fontFamily="serif"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView22"
             app:layout_constraintEnd_toEndOf="@+id/etFN"
@@ -122,9 +123,13 @@
         android:id="@+id/btnUpdateUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="220dp"
         android:text="ערוך"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="462dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

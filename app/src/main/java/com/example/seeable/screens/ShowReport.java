@@ -33,13 +33,13 @@ public class ShowReport extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        byte[] byteArray = getIntent().getByteArrayExtra("report_image");
-
-        if (byteArray != null) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            ImageView imageView = findViewById(R.id.imageViewReport);
-            imageView.setImageBitmap(bitmap);
-        }
+//        byte[] byteArray = getIntent().getByteArrayExtra("report_image");
+//
+//        if (byteArray != null) {
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//            ImageView imageView = findViewById(R.id.imageViewReport);
+//            imageView.setImageBitmap(bitmap);
+//        }
         Init();
         Report report = (Report) getIntent().getSerializableExtra("Report");
         tvBoolean1.setText(getStatus(report.getArrived()));
@@ -61,11 +61,14 @@ public class ShowReport extends AppCompatActivity {
         tvBoolean5=findViewById(R.id.tvBoolean5);
     }
     private String getStatus(Boolean flag){
-        if (flag==true)
+        if (flag == null) {
+            return "לא אומת";
+        }
+        else if (flag==true)
         {
             return "אושר";
         }
-        if (flag==false)
+        else if (flag==false)
         {
             return "לא אושר";
         }
