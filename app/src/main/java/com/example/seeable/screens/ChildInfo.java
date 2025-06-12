@@ -3,6 +3,7 @@ package com.example.seeable.screens;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class ChildInfo extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "ChildInfo";
-    ImageButton imageButton;
+    ImageButton img_btn_trash;
     DatabaseService databaseService;
 
     RecyclerView recyclerView;
@@ -42,9 +43,26 @@ public class ChildInfo extends AppCompatActivity implements View.OnClickListener
         databaseService = DatabaseService.getInstance();
         recyclerView = findViewById(R.id.rv_childInfo);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        imageButton=findViewById(R.id.img_btn_trash);
-        imageButton.setOnClickListener(this);
+        img_btn_trash = findViewById(R.id.img_btn_trash);
+        img_btn_trash.setOnClickListener(this);
         childAdapter = new ChildInfoAdapter();
+        childAdapter.setOnChildDeleteClickListener((child, position) -> {
+            databaseService.deleteChild(child.getId(), new DatabaseService.DatabaseCallback<Void>() {
+                @Override
+                public void onCompleted(Void result) {
+                    runOnUiThread(() -> {
+                        childAdapter.removeChild(position);
+                    });
+                }
+
+                @Override
+                public void onFailed(Exception e) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(ChildInfo.this, "שגיאה במחיקה", Toast.LENGTH_SHORT).show();
+                    });
+                }
+            });
+        });
         recyclerView.setAdapter(childAdapter);
 
         databaseService.getChildren(new DatabaseService.DatabaseCallback<List<Child>>() {

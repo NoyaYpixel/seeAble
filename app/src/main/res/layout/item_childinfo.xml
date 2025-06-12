@@ -145,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/deleteicon"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="50dp" />
+        tools:layout_editor_absoluteX="347dp"
+        tools:layout_editor_absoluteY="222dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

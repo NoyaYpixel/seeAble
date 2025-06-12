@@ -3,6 +3,7 @@ package com.example.seeable.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.ChildViewHolder>{
+
+    public interface OnChildDeleteClickListener {
+        void onDelete(Child child, int position);
+    }
+
+    private OnChildDeleteClickListener listener;
+
+    public void setOnChildDeleteClickListener(OnChildDeleteClickListener listener) {
+        this.listener = listener;
+    }
 
     final List<Child> childList;
 
@@ -42,6 +53,12 @@ public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.Chil
         holder.tvCommentsC.setText(child.getNotes());
         holder.tvbirthdayC.setText(child.getBirthday().toString());
 
+        holder.img_btn_trash.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDelete(child, holder.getAdapterPosition());
+            }
+        });
+
     }
 
     @Override
@@ -59,8 +76,16 @@ public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.Chil
         this.notifyDataSetChanged();
     }
 
+    public void removeChild(int position) {
+        if (position >= 0 && position < childList.size()) {
+            childList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
     protected static class ChildViewHolder extends RecyclerView.ViewHolder {
         TextView tvLNameC, tvbirthdayC, tvCId, tvFNameC, tvCommentsC;
+        ImageButton img_btn_trash;
 
         public ChildViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +94,7 @@ public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.Chil
             tvCId = itemView.findViewById(R.id.tvCId);
             tvbirthdayC = itemView.findViewById(R.id.tvbirthdayC);
             tvCommentsC = itemView.findViewById(R.id.tvCommentC);
+            img_btn_trash = itemView.findViewById(R.id.img_btn_trash);
 
         }
     }
