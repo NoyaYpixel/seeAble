@@ -18,7 +18,7 @@ import com.example.seeable.services.DatabaseService;
 
 import java.util.List;
 
-public class AllUsers extends AppCompatActivity {
+public class AllUsers extends MyBaseActivity {
     private static final String TAG = "AllUsers";
 
     DatabaseService databaseService;

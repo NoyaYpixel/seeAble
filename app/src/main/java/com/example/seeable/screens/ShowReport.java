@@ -19,7 +19,7 @@ import com.example.seeable.model.User;
 import com.example.seeable.services.AuthenticationService;
 import com.example.seeable.utils.SharedPreferencesUtil;
 
-public class ShowReport extends AppCompatActivity {
+public class ShowReport extends MyBaseActivity {
     TextView tvIsArrived, tvIsGood, tvIsAte, tvIsDrank, tvIsSlept;
     TextView tvBoolean1, tvBoolean2, tvBoolean3, tvBoolean4, tvBoolean5;
     AuthenticationService authenticationService;
@@ -42,6 +42,7 @@ public class ShowReport extends AppCompatActivity {
 //        }
         Init();
         Report report = (Report) getIntent().getSerializableExtra("Report");
+        assert report != null;
         tvBoolean1.setText(getStatus(report.getArrived()));
         tvBoolean2.setText(getStatus(report.getFeelingGood()));
         tvBoolean3.setText(getStatus(report.getEatMorning()));

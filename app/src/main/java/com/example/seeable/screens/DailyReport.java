@@ -24,7 +24,7 @@ import com.example.seeable.model.MyDate;
 import com.example.seeable.model.Report;
 import com.example.seeable.services.DatabaseService;
 
-public class DailyReport extends AppCompatActivity implements View.OnClickListener {
+public class DailyReport extends MyBaseActivity implements View.OnClickListener {
 
     private Child child;
     private Button btnDailyReportUpdating;
@@ -106,11 +106,11 @@ public class DailyReport extends AppCompatActivity implements View.OnClickListen
             Log.d("!!!!!!!!!!!!!!!", report.toString());
 
             sendDailyReport(report);
-//            Bitmap bitmap = captureScreenAsBitmap();
-//            byte[] byteArray = bitmapToByteArray(bitmap);
+//          Bitmap bitmap = captureScreenAsBitmap();
+//          byte[] byteArray = bitmapToByteArray(bitmap);
 
             Intent intent = new Intent(DailyReport.this, ShowReport.class);
-//            intent.putExtra("report_image", byteArray);
+//          intent.putExtra("report_image", byteArray);
             intent.putExtra("Report", report);
             startActivity(intent);
             return;

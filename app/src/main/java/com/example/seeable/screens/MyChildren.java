@@ -19,7 +19,7 @@ import com.example.seeable.services.DatabaseService;
 
 import java.util.List;
 
-public class MyChildren extends AppCompatActivity {
+public class MyChildren extends MyBaseActivity {
 
     private static final String TAG = "MyChildren";
 
@@ -46,7 +46,7 @@ public class MyChildren extends AppCompatActivity {
         childAdapter = new ChildAdapter(new ChildAdapter.OnChildClick() {
             @Override
             public void OnClick(Child child) {
-                Intent intent = new Intent(MyChildren.this, DailyReport.class);
+                Intent intent = new Intent(MyChildren.this, ChildReports.class);
                 intent.putExtra("child", child);
                 startActivity(intent);
             }

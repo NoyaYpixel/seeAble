@@ -23,7 +23,7 @@ import com.example.seeable.services.DatabaseService;
 
 import java.util.Date;
 
-public class SendAPublicMessage extends AppCompatActivity implements View.OnClickListener {
+public class SendAPublicMessage extends MyBaseActivity implements View.OnClickListener {
     EditText etMessageContent;
     Spinner spnWhoReceive;
     Button btnSendMessage;

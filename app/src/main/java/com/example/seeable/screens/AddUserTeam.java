@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class AddUserTeam extends AppCompatActivity {
+public class AddUserTeam extends MyBaseActivity {
     private static final String TAG = "AddUserTeam";
     RecyclerView usersRecyclerView;
     UsersAdapter usersAdapter;

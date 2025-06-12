@@ -24,7 +24,7 @@ import com.example.seeable.utils.SharedPreferencesUtil;
 import com.example.seeable.utils.Validator;
 import com.google.android.material.snackbar.Snackbar;
 
-public class EditUser extends AppCompatActivity implements View.OnClickListener {
+public class EditUser extends MyBaseActivity implements View.OnClickListener {
 
     private static final String TAG = "UserProfileActivity";
 

@@ -49,7 +49,7 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
             ((TextView)findViewById(R.id.textView3)).setText("היי לאיש צוות "+ this.user.getFname() + " " + this.user.getLname()+ "!");
         }
         else {
-            ((TextView) findViewById(R.id.textView3)).setText("היי למשתמש.ת " + this.user.getFname() + " " + this.user.getLname() + "!");
+            ((TextView) findViewById(R.id.textView3)).setText("היי להורה " + this.user.getFname() + " " + this.user.getLname() + "!");
         }
 
         btnAddC = findViewById(R.id.btnAddC);
@@ -113,7 +113,7 @@ public class HomePage extends MyBaseActivity implements View.OnClickListener {
         }
         if(view==btnShowR)
         {
-            Intent go=new Intent(getApplicationContext(), ShowReport.class);
+            Intent go=new Intent(getApplicationContext(), MyChildren.class);
             startActivity(go);
         }
 

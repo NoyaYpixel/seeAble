@@ -39,14 +39,14 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
 
     @NonNull
     @Override
-    public ReportAdapter.ReportViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReportViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_child, parent, false);
+                .inflate(R.layout.item_report, parent, false);
         return new ReportViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReportAdapter.ReportViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReportViewHolder holder, int position) {
         Report report = dailyReportList.get(position);
         holder.tvDate.setText(report.getDate().toString());
 
@@ -64,7 +64,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
     }
 
 
-    public class ReportViewHolder extends RecyclerView.ViewHolder {
+    public static class ReportViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvDate;
         public ReportViewHolder(@NonNull View itemView) {

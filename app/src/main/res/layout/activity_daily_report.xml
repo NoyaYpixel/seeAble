@@ -6,40 +6,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFCEF0FF"
-    tools:context=".screens.DailyReport">
+    tools:context=".screens.DailyReport"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-27dp">
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="329dp"
-        android:layout_height="181dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="41dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="17dp"
         android:fontFamily="@font/horevclmheavywebfont"
         android:gravity="center"
         android:text="דו''ח יומי לילד"
         android:textColor="#878686"
         android:textSize="90sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/assistantbold"
+        android:text="(שם הילד)"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/tvChildName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="62dp"
+        android:ems="10"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/textView9">
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        tools:text="@tools:sample/full_names" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/tvChildName"
+        app:layout_constraintStart_toStartOf="@+id/tvChildName"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="118dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView9">
 
         <RadioGroup
             android:id="@+id/radioGroup1"
@@ -53,7 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/assistantbold"
-                android:text="האם הילד הגיע ?" />
+                android:text="האם הילד הגיע ?"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbtnYes1"
@@ -61,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+                android:text="כן"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/rbtnNo1"
@@ -69,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
+                android:text="לא"
+                android:textSize="18sp" />
         </RadioGroup>
 
         <RadioGroup
@@ -83,7 +121,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/assistantbold"
-                android:text="האם הילד חש בטוב?" />
+                android:text="האם הילד חש בטוב?"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbtnYes2"
@@ -91,7 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+                android:text="כן"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/rbtnNo2"
@@ -99,7 +139,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
+                android:text="לא"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
@@ -114,7 +155,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/assistantbold"
-                android:text="האם הילד אכל בוקר ?" />
+                android:text="האם הילד אכל בוקר ?"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbtnYes3"
@@ -122,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+                android:text="כן"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/rbtnNo3"
@@ -130,7 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
+                android:text="לא"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
@@ -145,7 +189,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/assistantbold"
-                android:text="האם הילד שתה ?" />
+                android:text="האם הילד שתה ?"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbtnYes4"
@@ -153,7 +198,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+                android:text="כן"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/rbtnNo4"
@@ -161,7 +207,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
+                android:text="לא"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
@@ -176,7 +223,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/assistantbold"
-                android:text="האם הילד ישן ?" />
+                android:text="האם הילד ישן ?"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbtnYes5"
@@ -184,7 +232,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="כן" />
+                android:text="כן"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/rbtnNo5"
@@ -192,19 +241,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/assistantsemibold"
-                android:text="לא" />
+                android:text="לא"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
     </LinearLayout>
 
 
-
     <Button
         android:id="@+id/btnDailyReportUpdating"
         android:layout_width="252dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="32dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
         android:background="#B1AEAE"
         android:fontFamily="@font/asakimboldwebfont"
         android:text=" עדכן דו''ח יומי "
@@ -213,26 +262,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvChildName"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="152dp"
-        tools:text="@tools:sample/full_names" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/assistantbold"
-        android:text="(שם הילד)"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="153dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ import com.example.seeable.services.DatabaseService;
 
 import java.util.List;
 
-public class ChildInfo extends AppCompatActivity implements View.OnClickListener {
+public class ChildInfo extends MyBaseActivity implements View.OnClickListener {
     private static final String TAG = "ChildInfo";
     ImageButton img_btn_trash;
     DatabaseService databaseService;

@@ -21,7 +21,7 @@ import com.example.seeable.utils.SharedPreferencesUtil;
 
 import java.util.List;
 
-public class ChildrenList extends AppCompatActivity {
+public class ChildrenList extends MyBaseActivity {
 
     private static final String TAG = "ChildrenList";
 

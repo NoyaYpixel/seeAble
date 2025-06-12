@@ -144,8 +144,11 @@
         android:id="@+id/img_btn_trash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/deleteicon"
-        tools:layout_editor_absoluteX="347dp"
-        tools:layout_editor_absoluteY="222dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvComments"
+        app:srcCompat="@drawable/deleteicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

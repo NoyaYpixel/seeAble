@@ -17,7 +17,7 @@ import com.example.seeable.model.Child;
 import com.example.seeable.model.Report;
 import com.example.seeable.services.DatabaseService;
 
-public class ChildReports extends AppCompatActivity {
+public class ChildReports extends MyBaseActivity {
 
     DatabaseService databaseService;
     Child child;
